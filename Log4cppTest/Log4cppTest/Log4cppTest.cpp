@@ -20,7 +20,8 @@ int main()
 	cat.debug("debug Testing");
 	cat.error("error Testing");
 	cat.fatal("fatal Testing");
-	cat.warn(string("warn Testing"));
+	cat.warn("warn Testing");
+	cat.emerg("emerg Testing");// 优先级 等同于 fatal
 
 	log4cpp::Category::shutdown();
 

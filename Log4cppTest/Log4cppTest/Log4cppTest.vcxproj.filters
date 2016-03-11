@@ -19,4 +19,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libs\log4cpp\BasicLayout.hh">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\log4cpp\Category.hh">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\log4cpp\Priority.hh">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

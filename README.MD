@@ -1,13 +1,3 @@
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$('a[href^="http"]').each(function()
-		{
-			$(this).attr('target', '_blank');
-		});
-	});
-</script>
-
 ### ²Î¿¼ÍøÖ·
 * address 1
 * address 2

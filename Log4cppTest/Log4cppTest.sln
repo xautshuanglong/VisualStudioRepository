@@ -5,6 +5,14 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Log4cppTest", "Log4cppTest\Log4cppTest.vcxproj", "{158E4DF6-2354-4A55-BA3D-8FE8BC264085}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Log4cppConfigTest", "Log4cppConfigTest\Log4cppConfigTest.vcxproj", "{652677B2-0C4E-4BA6-A8BC-BB6A3FE54043}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3EB59E1F-BB0E-4277-A92C-67383C9D3114}"
+	ProjectSection(SolutionItems) = preProject
+		config\log4cpp.ini = config\log4cpp.ini
+		..\README.MD = ..\README.MD
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +23,10 @@ Global
 		{158E4DF6-2354-4A55-BA3D-8FE8BC264085}.Debug|Win32.Build.0 = Debug|Win32
 		{158E4DF6-2354-4A55-BA3D-8FE8BC264085}.Release|Win32.ActiveCfg = Release|Win32
 		{158E4DF6-2354-4A55-BA3D-8FE8BC264085}.Release|Win32.Build.0 = Release|Win32
+		{652677B2-0C4E-4BA6-A8BC-BB6A3FE54043}.Debug|Win32.ActiveCfg = Debug|Win32
+		{652677B2-0C4E-4BA6-A8BC-BB6A3FE54043}.Debug|Win32.Build.0 = Debug|Win32
+		{652677B2-0C4E-4BA6-A8BC-BB6A3FE54043}.Release|Win32.ActiveCfg = Release|Win32
+		{652677B2-0C4E-4BA6-A8BC-BB6A3FE54043}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

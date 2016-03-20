@@ -4,4 +4,4 @@
 * address 3
 
 ### 资源下载
-##### 源码包 [Log for C++ Project]: http://log4cpp.sourceforge.net/
+##### 源码包 [Log for C++ Project](http://log4cpp.sourceforge.net)

@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)libs;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)libs\log4cpp;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)libs;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\log4cpp;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.MD" />
+    <None Include="config\log4cpp.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

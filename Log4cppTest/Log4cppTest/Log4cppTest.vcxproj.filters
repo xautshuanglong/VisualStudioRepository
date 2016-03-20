@@ -21,5 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.MD" />
+    <None Include="config\log4cpp.ini" />
   </ItemGroup>
 </Project>

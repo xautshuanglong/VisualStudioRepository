@@ -23,6 +23,7 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
+	Category& console = Category::getInstance("console");
 	Category& sub1 = Category::getInstance("tempfile");
 	Category& sub2 = Category::getInstance("rolling");
 
@@ -37,6 +38,9 @@ int main(int argc, char* argv[])
 	sub2.debug("sub2 debug testing");
 	sub2.warn("sub2 warn testing");
 	sub2.error("sub2 error testing");
+
+	console.info("console info test");
+	console.warn("console warn test");
 
 	return 0;
 }

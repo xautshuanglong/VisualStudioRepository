@@ -116,7 +116,6 @@ int main(int argc, char* argv[])
 			break;
 		}
 		//cout << string("p0=") + userID << endl;
-		cout << "a=b" << endl;
 		pLog->info("============  End Switching  ============");
 	}
 
@@ -125,6 +124,48 @@ int main(int argc, char* argv[])
 
 void ReadPanelNameConfig(string userID)
 {
+	pLog->debug("inside ReadPanelNameConfig");
+
+	TiXmlDocument configXml("..//SavePanelAndMap.xml");
+	configXml.LoadFile();
+	TiXmlElement *pSavePanel = configXml.RootElement()->FirstChildElement("SavePanelName");
+	if (pSavePanel == NULL)
+	{
+		pLog->error("SavePanelAndMap.xml 不存在,或缺乏基本元素（本该自动生成，懒）");
+		return;
+	}
+	TiXmlElement *pUser = pSavePanel->FirstChildElement("User");
+	while (pUser)
+	{
+		if (userID == string(pUser->Attribute("userID")))
+		{
+			break;
+		}
+		else
+		{
+			pUser = pUser->NextSiblingElement();
+		}
+	}
+
+	if (pUser == NULL)
+	{
+		pLog->info(userID + string(" 没有缓存相关数据。"));
+		return;
+	}
+	
+	pLog->debug("处理相关数据");
+	TiXmlElement *pPanel = pUser->FirstChildElement();
+	string tempStr = "p0=2";// 协议编号
+	while (pPanel)
+	{
+		tempStr.append("&p");
+		tempStr.append(pPanel->Attribute("id"));
+		tempStr.append("=");
+		tempStr.append(pPanel->Attribute("name"));
+
+		pPanel = pPanel->NextSiblingElement();
+	}
+	cout << tempStr;
 }
 
 void WritePanelNameConfig(string userID, const list<string> requestStr)

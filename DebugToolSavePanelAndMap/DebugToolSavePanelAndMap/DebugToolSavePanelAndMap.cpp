@@ -124,8 +124,6 @@ int main(int argc, char* argv[])
 
 void ReadPanelNameConfig(string userID)
 {
-	pLog->debug("inside ReadPanelNameConfig");
-
 	TiXmlDocument configXml("..//SavePanelAndMap.xml");
 	configXml.LoadFile();
 	TiXmlElement *pSavePanel = configXml.RootElement()->FirstChildElement("SavePanelName");
@@ -153,7 +151,6 @@ void ReadPanelNameConfig(string userID)
 		return;
 	}
 	
-	pLog->debug("处理相关数据");
 	TiXmlElement *pPanel = pUser->FirstChildElement();
 	string tempStr = "p0=2";// 协议编号
 	while (pPanel)
@@ -162,7 +159,7 @@ void ReadPanelNameConfig(string userID)
 		tempStr.append(pPanel->Attribute("id"));
 		tempStr.append("=");
 		tempStr.append(pPanel->Attribute("name"));
-
+		pLog->info(string(pPanel->Attribute("id")) + string(" <-=-> ") + string(pPanel->Attribute("name")));
 		pPanel = pPanel->NextSiblingElement();
 	}
 	cout << tempStr;

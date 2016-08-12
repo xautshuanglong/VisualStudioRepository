@@ -18,11 +18,15 @@ namespace Log4netConfigTest
 		{
 			ILog log = LogManager.GetLogger("root");
 
+			log.Debug(log.Logger.Name);
+			
 			log.Debug("Debug Testing...");
 			log.Warn("Warn Testing ...");
 			log.Info("Info Testing ...");
 			log.Error("Error Testing ...");
 			log.Fatal("Fatal Testing ...");
+			
+			LogManager.Shutdown();
 		}
 	}
 }

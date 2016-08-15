@@ -9,9 +9,8 @@ using log4net.Config;
 using log4net.Core;
 using log4net.Filter;
 
-//[assembly: XmlConfigurator(Watch = true)]
-[assembly: XmlConfigurator(ConfigFile = @"..\\..\\Log4netConfig.xml", Watch = true)]
-//[assembly: XmlConfigurator(ConfigFile = "Log4netConfig", ConfigFileExtension = "xml", Watch = true)]
+//[assembly: XmlConfigurator(Watch = true)]// 在 App.config 中配置 log4net
+//[assembly: XmlConfigurator(ConfigFile = @"..\\..\\Log4netConfig.xml", Watch = true)]
 
 namespace Log4netConfigTest
 {
@@ -19,38 +18,10 @@ namespace Log4netConfigTest
 	{
 		static void Main(string[] args)
 		{
-			ILog log = LogManager.GetLogger("root");
-#if !DEBUG
-			IAppender[] appenders = log.Logger.Repository.GetAppenders();
-
-			LevelRangeFilter levelRange = new LevelRangeFilter();
-			levelRange.LevelMin = Level.Info;
-			levelRange.LevelMax = Level.Fatal;
-
-			foreach (IAppender appenderItem in appenders)
-			{
-				if (appenderItem is ConsoleAppender)
-				{
-					ConsoleAppender tempAppender = (ConsoleAppender)appenderItem;
-					tempAppender.ClearFilters();
-					tempAppender.AddFilter(levelRange);
-				}
-				else if (appenderItem is FileAppender)
-				{
-					FileAppender tempAppender = (FileAppender)appenderItem;
-					tempAppender.ClearFilters();
-					tempAppender.AddFilter(levelRange);
-				}
-				else if (appenderItem is RollingFileAppender)
-				{
-					RollingFileAppender tempAppender = (RollingFileAppender)appenderItem;
-					tempAppender.ClearFilters();
-					tempAppender.AddFilter(levelRange);
-				}
-			}
-#endif
-
+            LogTool log = LogTool.Instance();
+		    
 			log.Debug("Debug Testing...");
+            log.Debug("{0} --> {1}", "key", 321);
 			log.Warn("Warn Testing ...");
 			log.Info("Info Testing ...");
 			log.Error("Error Testing ...");

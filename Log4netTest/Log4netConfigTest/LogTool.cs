@@ -4,11 +4,8 @@ using log4net.Config;
 using log4net.Core;
 using log4net.Filter;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /************************************************************************/
 /*        OFF -> FATAL -> ERROR -> WARN -> INFO -> DEBUG -> ALL         */
@@ -23,6 +20,7 @@ namespace Log4netConfigTest
 
 		private static bool watchFlag = true;
 		private static string configFile = "..\\..\\Log4netConfig.xml";
+        private static string logFilesDir = ".\\logs";
 
 		private ILog m_log = null;
 
@@ -39,6 +37,7 @@ namespace Log4netConfigTest
 					if (null == logInstance)
 					{
 						logInstance = new LogTool();
+                        logInstance.CheckLogDirectory();
                         if (watchFlag)
                         {
                             XmlConfigurator.ConfigureAndWatch(new FileInfo(configFile));
@@ -49,39 +48,66 @@ namespace Log4netConfigTest
                         }
                         logInstance.m_log = LogManager.GetLogger("root");
 #if !DEBUG
-                        IAppender[] appenders = logInstance.m_log.Logger.Repository.GetAppenders();
-
-			            LevelRangeFilter levelRange = new LevelRangeFilter();
-			            levelRange.LevelMin = Level.Info;
-			            levelRange.LevelMax = Level.Fatal;
-
-			            foreach (IAppender appenderItem in appenders)
-			            {
-				            if (appenderItem is ConsoleAppender)
-				            {
-					            ConsoleAppender tempAppender = (ConsoleAppender)appenderItem;
-					            tempAppender.ClearFilters();
-					            tempAppender.AddFilter(levelRange);
-				            }
-				            else if (appenderItem is FileAppender)
-				            {
-					            FileAppender tempAppender = (FileAppender)appenderItem;
-					            tempAppender.ClearFilters();
-					            tempAppender.AddFilter(levelRange);
-				            }
-				            else if (appenderItem is RollingFileAppender)
-				            {
-					            RollingFileAppender tempAppender = (RollingFileAppender)appenderItem;
-					            tempAppender.ClearFilters();
-					            tempAppender.AddFilter(levelRange);
-				            }
-			            }
+                        logInstance.ChangeFilterForRelease();
 #endif
                     }
                 }
 			}
 			return logInstance;
 		}
+
+        private void ChangeFilterForRelease()
+        {
+            IAppender[] appenders = logInstance.m_log.Logger.Repository.GetAppenders();
+
+            LevelRangeFilter levelRange = new LevelRangeFilter();
+            levelRange.LevelMin = Level.Info;
+            levelRange.LevelMax = Level.Fatal;
+
+            foreach (IAppender appenderItem in appenders)
+            {
+                if (appenderItem is ConsoleAppender)
+                {
+                    ConsoleAppender tempAppender = (ConsoleAppender)appenderItem;
+                    tempAppender.ClearFilters();
+                    tempAppender.AddFilter(levelRange);
+                }
+                else if (appenderItem is FileAppender)
+                {
+                    FileAppender tempAppender = (FileAppender)appenderItem;
+                    tempAppender.ClearFilters();
+                    tempAppender.AddFilter(levelRange);
+                    tempAppender.File = logFilesDir;
+                }
+                else if (appenderItem is RollingFileAppender)
+                {
+                    RollingFileAppender tempAppender = (RollingFileAppender)appenderItem;
+                    tempAppender.ClearFilters();
+                    tempAppender.AddFilter(levelRange);
+                    tempAppender.File = logFilesDir;
+                }
+            }
+        }
+
+        private void CheckLogDirectory()
+        {
+            string curExeFilename = Process.GetCurrentProcess().MainModule.FileName;
+            string logsDir = curExeFilename.Substring(0, curExeFilename.LastIndexOf("\\")) + "\\logs";
+            logFilesDir = logsDir;
+
+            try
+            {
+                if (!Directory.Exists(logsDir))
+                {
+                    Console.WriteLine("Create....");
+                    Directory.CreateDirectory(logsDir);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
 
         public void Debug(string msgFmt, params object[] args)
         {

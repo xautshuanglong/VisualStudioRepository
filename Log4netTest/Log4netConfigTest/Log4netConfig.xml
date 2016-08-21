@@ -11,7 +11,7 @@
 
 	<!-- FileAppender Configuration -->
 	<appender name="FileAppender" type="log4net.Appender.FileAppender">
-		<file value="tempFile.log" />
+		<file value=".\\logs\\tempFile.log" />
 		<appendToFile value="false" />
 		<layout type="log4net.Layout.PatternLayout">
 			<!--<header value="=================================  Begin  =============================&#13;&#10;" />
@@ -22,7 +22,7 @@
 
 	<!-- RollingFileAppender Configuration -->
 	<appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
-		<file value="RollingFile.log" />
+		<file value=".\\logs\\RollingFile.log" />
 		<appendToFile value="true" />
 		<staticLogFileName value="false" />
 		<rollingStyle value="Size" />

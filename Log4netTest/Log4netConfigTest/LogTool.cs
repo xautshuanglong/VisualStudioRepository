@@ -93,17 +93,18 @@ namespace Log4netConfigTest
         {
             string curExeFilename = Process.GetCurrentProcess().MainModule.FileName;
             string logsDir = curExeFilename.Substring(0, curExeFilename.LastIndexOf("\\")) + "\\logs";
+            logFilesDir = logsDir;
 
             try
             {
                 if (!Directory.Exists(logsDir))
                 {
                     Directory.CreateDirectory(logsDir);
-                    logFilesDir = logsDir;
                 }
             }
             catch (System.Exception ex)
             {
+                ex.ToString();// avoid warn when compling.
             }
         }
 

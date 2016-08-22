@@ -15,7 +15,7 @@ namespace Log4netConfigTest
 {
 	public sealed class LogTool
 	{
-		private static LogTool logInstance = null;
+		private static volatile LogTool logInstance = null;
 		private static readonly object SynObj = new object();
 
 		private static bool watchFlag = true;
@@ -47,9 +47,7 @@ namespace Log4netConfigTest
                             XmlConfigurator.Configure(new FileInfo(configFile));
                         }
                         logInstance.m_log = LogManager.GetLogger("root");
-#if !DEBUG
                         logInstance.ChangeFilterForRelease();
-#endif
                     }
                 }
 			}
@@ -69,22 +67,28 @@ namespace Log4netConfigTest
                 if (appenderItem is ConsoleAppender)
                 {
                     ConsoleAppender tempAppender = (ConsoleAppender)appenderItem;
+#if !DEBUG
                     tempAppender.ClearFilters();
                     tempAppender.AddFilter(levelRange);
+#endif
                 }
                 else if (appenderItem is FileAppender)
                 {
                     FileAppender tempAppender = (FileAppender)appenderItem;
+#if !DEBUG
                     tempAppender.ClearFilters();
                     tempAppender.AddFilter(levelRange);
-                    tempAppender.File = logFilesDir;
+#endif
+                    tempAppender.File = logFilesDir + "\\TempFile.log";
                 }
                 else if (appenderItem is RollingFileAppender)
                 {
                     RollingFileAppender tempAppender = (RollingFileAppender)appenderItem;
+#if !DEBUG
                     tempAppender.ClearFilters();
                     tempAppender.AddFilter(levelRange);
-                    tempAppender.File = logFilesDir;
+#endif
+                    tempAppender.File = logFilesDir + "\\RollingFile.log";
                 }
             }
         }
@@ -92,8 +96,14 @@ namespace Log4netConfigTest
         private void CheckLogDirectory()
         {
             string curExeFilename = Process.GetCurrentProcess().MainModule.FileName;
-            string logsDir = curExeFilename.Substring(0, curExeFilename.LastIndexOf("\\")) + "\\logs";
-            logFilesDir = logsDir;
+            string curExeDir = curExeFilename.Substring(0, curExeFilename.LastIndexOf("\\"));
+            string logsDir = curExeDir + "\\logs";
+            logFilesDir = logsDir;// save path to place log files.
+#if !DEBUG
+            configFile = curExeDir + "\\Log4netConfig.xml";
+#else
+            configFile = curExeDir + "\\" + configFile;
+#endif
 
             try
             {
@@ -104,7 +114,7 @@ namespace Log4netConfigTest
             }
             catch (System.Exception ex)
             {
-                ex.ToString();// avoid warn when compling.
+                ex.ToString();// avoid warn when compiling.
             }
         }
 

@@ -19,13 +19,16 @@ namespace Log4netConfigTest
 		static void Main(string[] args)
 		{
             LogTool log = LogTool.Instance();
-		    
-			log.Debug("Debug Testing...");
-            log.Debug("{0} --> {1}", "key", 321);
-			log.Warn("Warn Testing ...");
-			log.Info("Info Testing ...");
-			log.Error("Error Testing ...");
-			log.Fatal("Fatal Testing ...");
+
+            for (int i = 0; i < 10; i++)
+            {
+                log.Debug("Debug Testing...");
+                log.Debug("{0} --> {1}", "key", 321);
+                log.Warn("Warn Testing ...");
+                log.Info("Info Testing ...");
+                log.Error("Error Testing ...");
+                log.Fatal("Fatal Testing ...");
+            }
 			
 			LogManager.Shutdown();
 		}

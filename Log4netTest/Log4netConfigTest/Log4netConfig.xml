@@ -11,7 +11,7 @@
 
 	<!-- FileAppender Configuration -->
 	<appender name="FileAppender" type="log4net.Appender.FileAppender">
-		<file value=".\\logs\\tempFile.log" />
+		<file value=".\\logs\\TempFile.log" />
 		<appendToFile value="false" />
 		<layout type="log4net.Layout.PatternLayout">
 			<!--<header value="=================================  Begin  =============================&#13;&#10;" />
@@ -26,10 +26,10 @@
 		<appendToFile value="true" />
 		<staticLogFileName value="false" />
 		<rollingStyle value="Size" />
-		<maxSizeRollBackups value="4" />
-		<maximumFileSize value="2KB" />
-    <!-- countDirection: 大于等于零升序，小于零降序 -->
 		<countDirection value="-1" />
+		<maxSizeRollBackups value="4" />
+		<maximumFileSize value="1KB" />
+    <!-- countDirection: 大于等于零升序，小于零降序 -->
 		<layout type="log4net.Layout.PatternLayout">
 			<conversionPattern value="%date [%-5level] %logger - %message%newline" />
 		</layout>

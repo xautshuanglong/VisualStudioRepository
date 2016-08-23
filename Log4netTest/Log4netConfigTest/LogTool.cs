@@ -3,6 +3,7 @@ using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
 using log4net.Filter;
+using log4net.Repository.Hierarchy;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -72,6 +73,15 @@ namespace Log4netConfigTest
                     tempAppender.AddFilter(levelRange);
 #endif
                 }
+                else if (appenderItem is RollingFileAppender)// RollingFileAppender is extends FileAppender,so it should be judged before FileAppender.
+                {
+                    RollingFileAppender tempAppender = (RollingFileAppender)appenderItem;
+#if !DEBUG
+                    tempAppender.ClearFilters();
+                    tempAppender.AddFilter(levelRange);
+#endif
+                    tempAppender.File = logFilesDir + "\\RollingFile.log";
+                }
                 else if (appenderItem is FileAppender)
                 {
                     FileAppender tempAppender = (FileAppender)appenderItem;
@@ -81,14 +91,11 @@ namespace Log4netConfigTest
 #endif
                     tempAppender.File = logFilesDir + "\\TempFile.log";
                 }
-                else if (appenderItem is RollingFileAppender)
+                else
                 {
-                    RollingFileAppender tempAppender = (RollingFileAppender)appenderItem;
-#if !DEBUG
-                    tempAppender.ClearFilters();
-                    tempAppender.AddFilter(levelRange);
-#endif
-                    tempAppender.File = logFilesDir + "\\RollingFile.log";
+                    // For security, remove all other appenders.
+                    Logger logger = (Logger)m_log.Logger;
+                    logger.Parent.RemoveAppender(appenderItem);
                 }
             }
         }

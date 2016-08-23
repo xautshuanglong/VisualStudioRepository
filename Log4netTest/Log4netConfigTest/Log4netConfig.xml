@@ -27,7 +27,7 @@
 		<staticLogFileName value="false" />
 		<rollingStyle value="Size" />
 		<countDirection value="-1" />
-		<maxSizeRollBackups value="4" />
+		<maxSizeRollBackups value="5" />
 		<maximumFileSize value="1KB" />
     <!-- countDirection: 大于等于零升序，小于零降序 -->
 		<layout type="log4net.Layout.PatternLayout">

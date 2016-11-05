@@ -75,7 +75,7 @@
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\log4net\AnyCpu\DllDebug\log4net.dll</HintPath>
+      <HintPath>..\log4net\x86\DllDebug\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="Log4netConfig.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

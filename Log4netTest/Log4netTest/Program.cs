@@ -16,35 +16,37 @@ namespace Log4netTest
 	{
 		static void Main(string[] args)
 		{
-
-			PatternLayout pl = new PatternLayout("%d [%-5p] %c - %m%n");
+            System.Console.WriteLine("==================== Log4netTest ====================");
+			PatternLayout pl = new PatternLayout("%d [%-5p] %class.%method -> %m%n");
 
 			LevelRangeFilter lrf = new LevelRangeFilter();
-			lrf.LevelMax = Level.Warn;
+			lrf.LevelMax = Level.Fatal;
 			lrf.LevelMin = Level.Debug;
 			lrf.ActivateOptions();
 
 			FileAppender fa = new FileAppender();
 			fa.Layout = pl;
-			fa.File = @"E:\\testFile.log";
+			fa.File = @".\\testFile.log";
 			fa.AddFilter(lrf);
 			fa.ActivateOptions();
 			//fa.AppendToFile = true;
-			BasicConfigurator.Configure(fa);
+			//BasicConfigurator.Configure(fa);
 
-			//ConsoleAppender ca = new ConsoleAppender();
-			//ca.Layout = pl;
-			//BasicConfigurator.Configure(ca);
+            ConsoleAppender ca = new ConsoleAppender();
+            ca.Layout = pl;
+            //BasicConfigurator.Configure(ca);
+            IAppender []appenders = { fa, ca };
+            BasicConfigurator.Configure(appenders);
 
-			//BasicConfigurator.Configure();
-
-			ILog log = LogManager.GetLogger("root");
+            ILog log = LogManager.GetLogger("root");
 
 			log.Debug("Debug Testing...");
 			log.Warn("Warn Testing ...");
 			log.Info("Info Testing ...");
 			log.Error("Error Testing ...");
 			log.Fatal("Fatal Testing ...");
+
+            System.Console.ReadLine();
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace Log4netConfigTest
 		private static readonly object SynObj = new object();
 
 		private static bool watchFlag = true;
-		private static string configFile = "..\\..\\Log4netConfig.xml";
+		private static string configFile = ".\\Log4netConfig.xml";
         private static string logFilesDir = ".\\logs";
 
 		private ILog m_log = null;
@@ -106,11 +106,7 @@ namespace Log4netConfigTest
             string curExeDir = curExeFilename.Substring(0, curExeFilename.LastIndexOf("\\"));
             string logsDir = curExeDir + "\\logs";
             logFilesDir = logsDir;// save path to place log files.
-#if !DEBUG
-            configFile = curExeDir + "\\Log4netConfig.xml";
-#else
-            configFile = curExeDir + "\\" + configFile;
-#endif
+            configFile = curExeDir + configFile;
 
             try
             {
@@ -123,6 +119,11 @@ namespace Log4netConfigTest
             {
                 ex.ToString();// avoid warn when compiling.
             }
+        }
+
+        public ILog GetLogger()
+        {
+            return m_log;
         }
 
         public void Debug(string msgFmt, params object[] args)
@@ -227,6 +228,11 @@ namespace Log4netConfigTest
             {
                 watchFlag = value;
             }
+        }
+
+        public void Shutdown()
+        {
+            LogManager.Shutdown();
         }
 	}
 }

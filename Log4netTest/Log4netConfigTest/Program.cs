@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using log4net;
+//using log4net;
 using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
@@ -18,9 +18,10 @@ namespace Log4netConfigTest
 	{
 		static void Main(string[] args)
 		{
+            System.Console.WriteLine("===================== Log4netConfigTest =====================");
             LogTool log = LogTool.Instance();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
             {
                 log.Debug("Debug Testing...");
                 log.Debug("{0} --> {1}", "key", 321);
@@ -29,8 +30,18 @@ namespace Log4netConfigTest
                 log.Error("Error Testing ...");
                 log.Fatal("Fatal Testing ...");
             }
-			
-			LogManager.Shutdown();
+            TestMethod();
+
+            LogTool.Instance().Shutdown();
 		}
+
+        static void TestMethod()
+        {
+            LogTool log = LogTool.Instance();
+            log.Debug("Inside TestMethod...");
+            log.Info("Inside TestMethod...");
+            log4net.ILog logger = LogTool.Instance().GetLogger();
+            logger.Warn("Inside TestMethod");
+        }
 	}
 }

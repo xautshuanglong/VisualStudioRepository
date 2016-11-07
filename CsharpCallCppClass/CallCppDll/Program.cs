@@ -11,10 +11,10 @@ namespace CallCppDll
         static void Main(string[] args)
         {
             Person p = new Person();
-            //p.SetName("shuanglong");
+            p.SetName("shuanglong");
             p.SetAge(24);
 
-            //System.Console.WriteLine("Name:" + p.GetName());
+            System.Console.WriteLine("Name:" + p.GetName());
             System.Console.WriteLine("Age:" + p.GetAge());
         }
     }

@@ -1,4 +1,5 @@
 #include <vcclr.h>
+#include <iostream>
 #include "Person.h"
 
 Person::Person()
@@ -13,12 +14,14 @@ Person::~Person()
 
 void Person::SetName(String^ name)
 {
-	pin_ptr<const wchar_t> pName = PtrToStringChars(name);
+	pin_ptr<const Char> pName = PtrToStringChars(name);
 	char tempName[DEFAULT_NAME_LEN];
-	for (int i=0;*(pName+i)!='\0';i++)
+	int i = 0;
+	for (i=0;*(pName+i)!='\0';i++)
 	{
 		tempName[i] = *(pName + i);
 	}
+	tempName[i] = '\0';
 	m_pCPerson->SetName(tempName);
 }
 

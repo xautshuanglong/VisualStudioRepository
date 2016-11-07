@@ -1,10 +1,11 @@
 #include <iostream>
-
+#include <windows.h>
 #include "CPerson.h"
 
 CPerson::CPerson()
 {
 	m_name = new char[DEFAULT_NAME_LEN];
+	ZeroMemory(m_name, DEFAULT_NAME_LEN);
 }
 
 CPerson::~CPerson()
@@ -15,11 +16,11 @@ CPerson::~CPerson()
 void CPerson::SetName(char *name)
 {
 	int nameLen = strlen(name);
-	if (nameLen > DEFAULT_NAME_LEN)
+	if (nameLen > DEFAULT_NAME_LEN - 1)
 	{
-		nameLen = DEFAULT_NAME_LEN;
+		nameLen = DEFAULT_NAME_LEN - 1;
 	}
-	strcpy_s(m_name, nameLen, name);
+	strcpy_s(m_name, nameLen+1, name);
 }
 
 char* CPerson::GetName()

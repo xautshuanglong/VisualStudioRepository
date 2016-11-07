@@ -14,6 +14,8 @@ namespace LogToolPackageTest
 
             LogTool log = LogTool.Instance();
             log.Debug("test");
+            log.Info("Info Test");
+            log.Warn("{0} --> {1}", "key", "value");
 
             TestMethod();
         }
@@ -22,6 +24,9 @@ namespace LogToolPackageTest
         {
             LogTool log = LogTool.Instance();
             log.Debug("Inside TestMethod()");
+            log.Error("{0} --> {1}", "key", 12345);
+            log.Fatal("Fatal Testing");
+            log.Fatal("{1} <-- {0}", "key", "value");
         }
     }
 }

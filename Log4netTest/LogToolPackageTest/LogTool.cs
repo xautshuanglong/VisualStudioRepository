@@ -30,7 +30,9 @@ namespace LogToolPackageTest
         private static string configFile = "Log4netConfig.xml";
         private static string logsOutDir = "logs";
 
-        private IMyLog m_myLog;
+        private static readonly Type thisDeclareType = typeof(LogTool);
+
+        private ILog m_log;
 
         private LogTool()
         {
@@ -55,17 +57,14 @@ namespace LogToolPackageTest
                         else
                         {
                             XmlConfigurator.Configure(file);
-                            logInstance.m_myLog = MyLogManager.GetLogger("root");
-                            if (logInstance.m_myLog.Logger.Repository.Configured)
-                            {
-                                // 从文件加载 log4net 配置，防篡改，过滤日志等级
-                                logInstance.ChangeFilterForRelease();
-                            }
-                            else
+                            ILog logger = LogManager.GetLogger("root");
+                            logInstance.m_log = LogManager.GetLogger("root");
+                            if (logInstance.m_log.Logger.Repository.Configured == false)
                             {
                                 logInstance.BasicConfigLog4net();
-                                logInstance.m_myLog = MyLogManager.GetLogger("root");
+                                logInstance.m_log = LogManager.GetLogger("root");
                             }
+                            logInstance.ChangeFilterForRelease();
                         }
                     }
                 }
@@ -79,7 +78,7 @@ namespace LogToolPackageTest
         private void ChangeFilterForRelease()
         {
 #if !DEBUG
-            IAppender[] appenders = m_myLog.Logger.Repository.GetAppenders();
+            IAppender[] appenders = m_log.Logger.Repository.GetAppenders();
 
             LevelRangeFilter levelRange = new LevelRangeFilter();
             levelRange.LevelMin = Level.Info;
@@ -110,7 +109,7 @@ namespace LogToolPackageTest
                 else
                 {
                     // For security, remove all other appenders.
-                    Logger logger = (Logger)m_myLog.Logger;
+                    Logger logger = (Logger)m_log.Logger;
                     logger.Parent.RemoveAppender(appenderItem);
                 }
             }
@@ -165,7 +164,6 @@ namespace LogToolPackageTest
 
         private void BasicConfigLog4net()
         {
-            System.Console.WriteLine("Inside BasicConfigLog4net()");
             PatternLayout pl = new PatternLayout("%date{HH:mm:ss.fff} [%-5level] %class.%method - %message%newline");
 
             LevelRangeFilter lrf = new LevelRangeFilter();
@@ -179,85 +177,141 @@ namespace LogToolPackageTest
             fa.AddFilter(lrf);
             fa.ActivateOptions();
 
+            RollingFileAppender rfa = new RollingFileAppender();
+            rfa.Layout = pl;
+            rfa.File = @".\\logs\\RollingFile.log";
+            rfa.RollingStyle = RollingFileAppender.RollingMode.Size;
+            rfa.MaximumFileSize = "1KB";
+            rfa.CountDirection = -1;
+            rfa.MaxSizeRollBackups = 5;
+            rfa.AppendToFile = true;
+            rfa.AddFilter(lrf);
+            rfa.ActivateOptions();
+
             ConsoleAppender ca = new ConsoleAppender();
             ca.Layout = pl;
-            IAppender[] appenders = { fa, ca };
+            IAppender[] appenders = { fa, rfa, ca };
             BasicConfigurator.Configure(appenders);
         }
 
         public void Debug(string message)
         {
-            m_myLog.Debug(message);
+            m_log.Logger.Log(thisDeclareType, Level.Debug, message, null);
+        }
+
+        public void Debug(string format, params object[] args)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Debug, String.Format(format,args), null);
+        }
+
+        public void Info(string message)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Info, message, null);
+        }
+
+        public void Info(string format, params object[] args)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Info, String.Format(format, args), null);
+        }
+
+        public void Warn(string message)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Warn, message, null);
+        }
+
+        public void Warn(string format, params object[] args)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Warn, String.Format(format, args), null);
+        }
+
+        public void Error(string message)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Error, message, null);
+        }
+
+        public void Error(string format, params object[] args)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Error, String.Format(format, args), null);
+        }
+
+        public void Fatal(string message)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Fatal, message, null);
+        }
+
+        public void Fatal(string format, params object[] args)
+        {
+            m_log.Logger.Log(thisDeclareType, Level.Fatal, String.Format(format, args), null);
         }
     }
 
-    interface IMyLog:ILog
-    {
-        void Debug(string message);
-        void Debug(string format, object[] args);
-    }
+    //interface IMyLog:ILog
+    //{
+    //    void Debug(string message);
+    //    void Debug(string format, object[] args);
+    //}
 
-    class MyLogImpl:LogImpl,IMyLog
-    {
-        private readonly static Type thisDeclaringType = typeof(LogTool);
+    //class MyLogImpl:LogImpl,IMyLog
+    //{
+    //    private readonly static Type thisDeclaringType = typeof(LogTool);
 
-        public MyLogImpl(ILogger logger):base(logger)
-        {
-        }
+    //    public MyLogImpl(ILogger logger):base(logger)
+    //    {
+    //    }
 
-        public void Debug(string message)
-        {
-            Logger.Log(thisDeclaringType, Level.Info, message, null);
-        }
+    //    public void Debug(string message)
+    //    {
+    //        Logger.Log(thisDeclaringType, Level.Info, message, null);
+    //    }
 
-        public void Debug(string format, object[] args)
-        {
-            Logger.Log(thisDeclaringType, Level.Info, new SystemStringFormat(CultureInfo.InvariantCulture, format, args), null);
-        }
-    }
+    //    public void Debug(string format, object[] args)
+    //    {
+    //        Logger.Log(thisDeclaringType, Level.Info, new SystemStringFormat(CultureInfo.InvariantCulture, format, args), null);
+    //    }
+    //}
 
-    class MyLogManager
-    {
-        private static readonly WrapperMap m_wrapperMap = new WrapperMap(new WrapperCreationHandler(MyWrapperCreationHandler));
+    //class MyLogManager
+    //{
+    //    private static readonly WrapperMap m_wrapperMap = new WrapperMap(new WrapperCreationHandler(MyWrapperCreationHandler));
 
-        public static IMyLog Exists(string name)
-        {
-            return Exists(Assembly.GetCallingAssembly(), name);
-        }
+    //    public static IMyLog Exists(string name)
+    //    {
+    //        return Exists(Assembly.GetCallingAssembly(), name);
+    //    }
 
-        public static IMyLog Exists(string domain, string name)
-        {
-            return WrapLogger(LoggerManager.Exists(domain, name));
-        }
+    //    public static IMyLog Exists(string domain, string name)
+    //    {
+    //        return WrapLogger(LoggerManager.Exists(domain, name));
+    //    }
 
-        public static IMyLog Exists(Assembly assembly, string name)
-        {
-            return WrapLogger(LoggerManager.Exists(assembly, name));
-        }
+    //    public static IMyLog Exists(Assembly assembly, string name)
+    //    {
+    //        return WrapLogger(LoggerManager.Exists(assembly, name));
+    //    }
 
-        public static IMyLog GetLogger(string name)
-        {
-            return GetLogger(Assembly.GetCallingAssembly(), name);
-        }
+    //    public static IMyLog GetLogger(string name)
+    //    {
+    //        return GetLogger(Assembly.GetCallingAssembly(), name);
+    //    }
 
-        public static IMyLog GetLogger(string domain, string name)
-        {
-            return WrapLogger(LoggerManager.GetLogger(domain, name));
-        }
+    //    public static IMyLog GetLogger(string domain, string name)
+    //    {
+    //        return WrapLogger(LoggerManager.GetLogger(domain, name));
+    //    }
 
-        public static IMyLog GetLogger(Assembly assembly, string name)
-        {
-            return WrapLogger(LoggerManager.GetLogger(assembly, name));
-        }
+    //    public static IMyLog GetLogger(Assembly assembly, string name)
+    //    {
+    //        return WrapLogger(LoggerManager.GetLogger(assembly, name));
+    //    }
 
-        private static IMyLog WrapLogger(ILogger logger)
-        {
-            return (IMyLog)m_wrapperMap.GetWrapper(logger);
-        }
+    //    private static IMyLog WrapLogger(ILogger logger)
+    //    {
+    //        return (IMyLog)m_wrapperMap.GetWrapper(logger);
+    //    }
 
-        private static ILoggerWrapper MyWrapperCreationHandler(ILogger logger)
-        {
-            return new MyLogImpl(logger);
-        }
-    }
+    //    private static ILoggerWrapper MyWrapperCreationHandler(ILogger logger)
+    //    {
+    //        return new MyLogImpl(logger);
+    //    }
+    //}
 }

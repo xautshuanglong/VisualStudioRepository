@@ -156,3 +156,10 @@ $RECYCLE.BIN/
 .DS_Store
 *.opendb
 *.db
+
+# Trace by Shuanglong
+!**/Libs/*/[Dd]ebug/
+!**/Libs/*/[Rr]elease/
+!**/Libs/*/x[86][64]/
+!**/Libs/*/x[86][64]/[Dd]ebug/
+!**/Libs/*/x[86][64]/[Rr]elease

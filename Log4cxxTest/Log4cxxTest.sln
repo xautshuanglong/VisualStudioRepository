@@ -12,14 +12,257 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{486B94AC-0761-45E1-9725-0D3AF34265C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{2F26D16A-0200-49A4-A8CD-155999A29454}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\log4cxx\x86\Debug\log4cxx.dll = Libs\log4cxx\x86\Debug\log4cxx.dll
+		Libs\log4cxx\x86\Debug\log4cxx.lib = Libs\log4cxx\x86\Debug\log4cxx.lib
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{CCA101E7-2726-4306-AEB8-125648704465}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\log4cxx\x86\Release\log4cxx.dll = Libs\log4cxx\x86\Release\log4cxx.dll
+		Libs\log4cxx\x86\Release\log4cxx.lib = Libs\log4cxx\x86\Release\log4cxx.lib
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{9EAC209E-7103-4BCD-93D7-3AFA2B7C6F05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{8E5AE49F-B7B1-4F59-9175-26026D00786F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "log4cxx", "log4cxx", "{2E5C5359-0975-4844-9766-6D1F32C76F19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{EBFFDDC8-39DC-4E62-BD0C-EDF08D09B2A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "log4cxx", "log4cxx", "{ED4C5E24-047E-4644-B19D-43D9C09EE347}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\appender.h = Libs\include\log4cxx\appender.h
+		Libs\include\log4cxx\appenderskeleton.h = Libs\include\log4cxx\appenderskeleton.h
+		Libs\include\log4cxx\asyncappender.h = Libs\include\log4cxx\asyncappender.h
+		Libs\include\log4cxx\basicconfigurator.h = Libs\include\log4cxx\basicconfigurator.h
+		Libs\include\log4cxx\consoleappender.h = Libs\include\log4cxx\consoleappender.h
+		Libs\include\log4cxx\dailyrollingfileappender.h = Libs\include\log4cxx\dailyrollingfileappender.h
+		Libs\include\log4cxx\defaultconfigurator.h = Libs\include\log4cxx\defaultconfigurator.h
+		Libs\include\log4cxx\defaultloggerfactory.h = Libs\include\log4cxx\defaultloggerfactory.h
+		Libs\include\log4cxx\file.h = Libs\include\log4cxx\file.h
+		Libs\include\log4cxx\fileappender.h = Libs\include\log4cxx\fileappender.h
+		Libs\include\log4cxx\hierarchy.h = Libs\include\log4cxx\hierarchy.h
+		Libs\include\log4cxx\htmllayout.h = Libs\include\log4cxx\htmllayout.h
+		Libs\include\log4cxx\layout.h = Libs\include\log4cxx\layout.h
+		Libs\include\log4cxx\level.h = Libs\include\log4cxx\level.h
+		Libs\include\log4cxx\log4cxx.h = Libs\include\log4cxx\log4cxx.h
+		Libs\include\log4cxx\logger.h = Libs\include\log4cxx\logger.h
+		Libs\include\log4cxx\logmanager.h = Libs\include\log4cxx\logmanager.h
+		Libs\include\log4cxx\logstring.h = Libs\include\log4cxx\logstring.h
+		Libs\include\log4cxx\mdc.h = Libs\include\log4cxx\mdc.h
+		Libs\include\log4cxx\ndc.h = Libs\include\log4cxx\ndc.h
+		Libs\include\log4cxx\patternlayout.h = Libs\include\log4cxx\patternlayout.h
+		Libs\include\log4cxx\portability.h = Libs\include\log4cxx\portability.h
+		Libs\include\log4cxx\propertyconfigurator.h = Libs\include\log4cxx\propertyconfigurator.h
+		Libs\include\log4cxx\provisionnode.h = Libs\include\log4cxx\provisionnode.h
+		Libs\include\log4cxx\rollingfileappender.h = Libs\include\log4cxx\rollingfileappender.h
+		Libs\include\log4cxx\simplelayout.h = Libs\include\log4cxx\simplelayout.h
+		Libs\include\log4cxx\stream.h = Libs\include\log4cxx\stream.h
+		Libs\include\log4cxx\ttcclayout.h = Libs\include\log4cxx\ttcclayout.h
+		Libs\include\log4cxx\writerappender.h = Libs\include\log4cxx\writerappender.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{AE880763-31AC-48CF-9739-B13035A2D7B8}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\xml\domconfigurator.h = Libs\include\log4cxx\xml\domconfigurator.h
+		Libs\include\log4cxx\xml\xmllayout.h = Libs\include\log4cxx\xml\xmllayout.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "varia", "varia", "{B560BF58-B811-4952-81C9-5EB11F3D922C}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\varia\fallbackerrorhandler.h = Libs\include\log4cxx\varia\fallbackerrorhandler.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "spi", "spi", "{2C1489AD-5635-4E00-B09C-2EF243E079AC}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\spi\appenderattachable.h = Libs\include\log4cxx\spi\appenderattachable.h
+		Libs\include\log4cxx\spi\configurator.h = Libs\include\log4cxx\spi\configurator.h
+		Libs\include\log4cxx\spi\defaultrepositoryselector.h = Libs\include\log4cxx\spi\defaultrepositoryselector.h
+		Libs\include\log4cxx\spi\errorhandler.h = Libs\include\log4cxx\spi\errorhandler.h
+		Libs\include\log4cxx\spi\filter.h = Libs\include\log4cxx\spi\filter.h
+		Libs\include\log4cxx\spi\hierarchyeventlistener.h = Libs\include\log4cxx\spi\hierarchyeventlistener.h
+		Libs\include\log4cxx\spi\loggerfactory.h = Libs\include\log4cxx\spi\loggerfactory.h
+		Libs\include\log4cxx\spi\loggerrepository.h = Libs\include\log4cxx\spi\loggerrepository.h
+		Libs\include\log4cxx\spi\loggingevent.h = Libs\include\log4cxx\spi\loggingevent.h
+		Libs\include\log4cxx\spi\optionhandler.h = Libs\include\log4cxx\spi\optionhandler.h
+		Libs\include\log4cxx\spi\repositoryselector.h = Libs\include\log4cxx\spi\repositoryselector.h
+		Libs\include\log4cxx\spi\rootlogger.h = Libs\include\log4cxx\spi\rootlogger.h
+		Libs\include\log4cxx\spi\triggeringeventevaluator.h = Libs\include\log4cxx\spi\triggeringeventevaluator.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "location", "location", "{F6EB1068-53BA-44D8-93B5-985636B741CF}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\spi\location\locationinfo.h = Libs\include\log4cxx\spi\location\locationinfo.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rolling", "rolling", "{B51FEB75-18AE-42B0-813E-F861058234B3}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\rolling\action.h = Libs\include\log4cxx\rolling\action.h
+		Libs\include\log4cxx\rolling\filerenameaction.h = Libs\include\log4cxx\rolling\filerenameaction.h
+		Libs\include\log4cxx\rolling\filterbasedtriggeringpolicy.h = Libs\include\log4cxx\rolling\filterbasedtriggeringpolicy.h
+		Libs\include\log4cxx\rolling\fixedwindowrollingpolicy.h = Libs\include\log4cxx\rolling\fixedwindowrollingpolicy.h
+		Libs\include\log4cxx\rolling\gzcompressaction.h = Libs\include\log4cxx\rolling\gzcompressaction.h
+		Libs\include\log4cxx\rolling\manualtriggeringpolicy.h = Libs\include\log4cxx\rolling\manualtriggeringpolicy.h
+		Libs\include\log4cxx\rolling\rollingfileappender.h = Libs\include\log4cxx\rolling\rollingfileappender.h
+		Libs\include\log4cxx\rolling\rollingfileappenderskeleton.h = Libs\include\log4cxx\rolling\rollingfileappenderskeleton.h
+		Libs\include\log4cxx\rolling\rollingpolicy.h = Libs\include\log4cxx\rolling\rollingpolicy.h
+		Libs\include\log4cxx\rolling\rollingpolicybase.h = Libs\include\log4cxx\rolling\rollingpolicybase.h
+		Libs\include\log4cxx\rolling\rolloverdescription.h = Libs\include\log4cxx\rolling\rolloverdescription.h
+		Libs\include\log4cxx\rolling\sizebasedtriggeringpolicy.h = Libs\include\log4cxx\rolling\sizebasedtriggeringpolicy.h
+		Libs\include\log4cxx\rolling\timebasedrollingpolicy.h = Libs\include\log4cxx\rolling\timebasedrollingpolicy.h
+		Libs\include\log4cxx\rolling\triggeringpolicy.h = Libs\include\log4cxx\rolling\triggeringpolicy.h
+		Libs\include\log4cxx\rolling\zipcompressaction.h = Libs\include\log4cxx\rolling\zipcompressaction.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "private", "private", "{E2B70CBC-746B-41B5-AAE2-68A91B4F81F1}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\private\log4cxx_private.h = Libs\include\log4cxx\private\log4cxx_private.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pattern", "pattern", "{4D2857C6-7669-4523-AF0D-92DDDD92A50C}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\pattern\classnamepatternconverter.h = Libs\include\log4cxx\pattern\classnamepatternconverter.h
+		Libs\include\log4cxx\pattern\datepatternconverter.h = Libs\include\log4cxx\pattern\datepatternconverter.h
+		Libs\include\log4cxx\pattern\filedatepatternconverter.h = Libs\include\log4cxx\pattern\filedatepatternconverter.h
+		Libs\include\log4cxx\pattern\filelocationpatternconverter.h = Libs\include\log4cxx\pattern\filelocationpatternconverter.h
+		Libs\include\log4cxx\pattern\formattinginfo.h = Libs\include\log4cxx\pattern\formattinginfo.h
+		Libs\include\log4cxx\pattern\fulllocationpatternconverter.h = Libs\include\log4cxx\pattern\fulllocationpatternconverter.h
+		Libs\include\log4cxx\pattern\integerpatternconverter.h = Libs\include\log4cxx\pattern\integerpatternconverter.h
+		Libs\include\log4cxx\pattern\levelpatternconverter.h = Libs\include\log4cxx\pattern\levelpatternconverter.h
+		Libs\include\log4cxx\pattern\linelocationpatternconverter.h = Libs\include\log4cxx\pattern\linelocationpatternconverter.h
+		Libs\include\log4cxx\pattern\lineseparatorpatternconverter.h = Libs\include\log4cxx\pattern\lineseparatorpatternconverter.h
+		Libs\include\log4cxx\pattern\literalpatternconverter.h = Libs\include\log4cxx\pattern\literalpatternconverter.h
+		Libs\include\log4cxx\pattern\loggerpatternconverter.h = Libs\include\log4cxx\pattern\loggerpatternconverter.h
+		Libs\include\log4cxx\pattern\loggingeventpatternconverter.h = Libs\include\log4cxx\pattern\loggingeventpatternconverter.h
+		Libs\include\log4cxx\pattern\messagepatternconverter.h = Libs\include\log4cxx\pattern\messagepatternconverter.h
+		Libs\include\log4cxx\pattern\methodlocationpatternconverter.h = Libs\include\log4cxx\pattern\methodlocationpatternconverter.h
+		Libs\include\log4cxx\pattern\nameabbreviator.h = Libs\include\log4cxx\pattern\nameabbreviator.h
+		Libs\include\log4cxx\pattern\namepatternconverter.h = Libs\include\log4cxx\pattern\namepatternconverter.h
+		Libs\include\log4cxx\pattern\ndcpatternconverter.h = Libs\include\log4cxx\pattern\ndcpatternconverter.h
+		Libs\include\log4cxx\pattern\patternconverter.h = Libs\include\log4cxx\pattern\patternconverter.h
+		Libs\include\log4cxx\pattern\patternparser.h = Libs\include\log4cxx\pattern\patternparser.h
+		Libs\include\log4cxx\pattern\propertiespatternconverter.h = Libs\include\log4cxx\pattern\propertiespatternconverter.h
+		Libs\include\log4cxx\pattern\relativetimepatternconverter.h = Libs\include\log4cxx\pattern\relativetimepatternconverter.h
+		Libs\include\log4cxx\pattern\threadpatternconverter.h = Libs\include\log4cxx\pattern\threadpatternconverter.h
+		Libs\include\log4cxx\pattern\throwableinformationpatternconverter.h = Libs\include\log4cxx\pattern\throwableinformationpatternconverter.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nt", "nt", "{F087055B-4816-4D1E-B8C8-938885FCA877}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\nt\nteventlogappender.h = Libs\include\log4cxx\nt\nteventlogappender.h
+		Libs\include\log4cxx\nt\outputdebugstringappender.h = Libs\include\log4cxx\nt\outputdebugstringappender.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net", "net", "{D495B34D-1FE3-44C6-878E-C7F4DB06DB2D}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\net\smtpappender.h = Libs\include\log4cxx\net\smtpappender.h
+		Libs\include\log4cxx\net\socketappender.h = Libs\include\log4cxx\net\socketappender.h
+		Libs\include\log4cxx\net\socketappenderskeleton.h = Libs\include\log4cxx\net\socketappenderskeleton.h
+		Libs\include\log4cxx\net\sockethubappender.h = Libs\include\log4cxx\net\sockethubappender.h
+		Libs\include\log4cxx\net\syslogappender.h = Libs\include\log4cxx\net\syslogappender.h
+		Libs\include\log4cxx\net\telnetappender.h = Libs\include\log4cxx\net\telnetappender.h
+		Libs\include\log4cxx\net\xmlsocketappender.h = Libs\include\log4cxx\net\xmlsocketappender.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helpers", "helpers", "{E1AF0A30-1D3E-4056-888A-3B778EEBFECB}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\helpers\absolutetimedateformat.h = Libs\include\log4cxx\helpers\absolutetimedateformat.h
+		Libs\include\log4cxx\helpers\appenderattachableimpl.h = Libs\include\log4cxx\helpers\appenderattachableimpl.h
+		Libs\include\log4cxx\helpers\aprinitializer.h = Libs\include\log4cxx\helpers\aprinitializer.h
+		Libs\include\log4cxx\helpers\bufferedoutputstream.h = Libs\include\log4cxx\helpers\bufferedoutputstream.h
+		Libs\include\log4cxx\helpers\bufferedwriter.h = Libs\include\log4cxx\helpers\bufferedwriter.h
+		Libs\include\log4cxx\helpers\bytearrayinputstream.h = Libs\include\log4cxx\helpers\bytearrayinputstream.h
+		Libs\include\log4cxx\helpers\bytearrayoutputstream.h = Libs\include\log4cxx\helpers\bytearrayoutputstream.h
+		Libs\include\log4cxx\helpers\bytebuffer.h = Libs\include\log4cxx\helpers\bytebuffer.h
+		Libs\include\log4cxx\helpers\cacheddateformat.h = Libs\include\log4cxx\helpers\cacheddateformat.h
+		Libs\include\log4cxx\helpers\charsetdecoder.h = Libs\include\log4cxx\helpers\charsetdecoder.h
+		Libs\include\log4cxx\helpers\charsetencoder.h = Libs\include\log4cxx\helpers\charsetencoder.h
+		Libs\include\log4cxx\helpers\class.h = Libs\include\log4cxx\helpers\class.h
+		Libs\include\log4cxx\helpers\classregistration.h = Libs\include\log4cxx\helpers\classregistration.h
+		Libs\include\log4cxx\helpers\condition.h = Libs\include\log4cxx\helpers\condition.h
+		Libs\include\log4cxx\helpers\cyclicbuffer.h = Libs\include\log4cxx\helpers\cyclicbuffer.h
+		Libs\include\log4cxx\helpers\datagrampacket.h = Libs\include\log4cxx\helpers\datagrampacket.h
+		Libs\include\log4cxx\helpers\datagramsocket.h = Libs\include\log4cxx\helpers\datagramsocket.h
+		Libs\include\log4cxx\helpers\date.h = Libs\include\log4cxx\helpers\date.h
+		Libs\include\log4cxx\helpers\dateformat.h = Libs\include\log4cxx\helpers\dateformat.h
+		Libs\include\log4cxx\helpers\datelayout.h = Libs\include\log4cxx\helpers\datelayout.h
+		Libs\include\log4cxx\helpers\datetimedateformat.h = Libs\include\log4cxx\helpers\datetimedateformat.h
+		Libs\include\log4cxx\helpers\exception.h = Libs\include\log4cxx\helpers\exception.h
+		Libs\include\log4cxx\helpers\fileinputstream.h = Libs\include\log4cxx\helpers\fileinputstream.h
+		Libs\include\log4cxx\helpers\fileoutputstream.h = Libs\include\log4cxx\helpers\fileoutputstream.h
+		Libs\include\log4cxx\helpers\filewatchdog.h = Libs\include\log4cxx\helpers\filewatchdog.h
+		Libs\include\log4cxx\helpers\inetaddress.h = Libs\include\log4cxx\helpers\inetaddress.h
+		Libs\include\log4cxx\helpers\inputstream.h = Libs\include\log4cxx\helpers\inputstream.h
+		Libs\include\log4cxx\helpers\inputstreamreader.h = Libs\include\log4cxx\helpers\inputstreamreader.h
+		Libs\include\log4cxx\helpers\integer.h = Libs\include\log4cxx\helpers\integer.h
+		Libs\include\log4cxx\helpers\iso8601dateformat.h = Libs\include\log4cxx\helpers\iso8601dateformat.h
+		Libs\include\log4cxx\helpers\loader.h = Libs\include\log4cxx\helpers\loader.h
+		Libs\include\log4cxx\helpers\locale.h = Libs\include\log4cxx\helpers\locale.h
+		Libs\include\log4cxx\helpers\loglog.h = Libs\include\log4cxx\helpers\loglog.h
+		Libs\include\log4cxx\helpers\messagebuffer.h = Libs\include\log4cxx\helpers\messagebuffer.h
+		Libs\include\log4cxx\helpers\mutex.h = Libs\include\log4cxx\helpers\mutex.h
+		Libs\include\log4cxx\helpers\object.h = Libs\include\log4cxx\helpers\object.h
+		Libs\include\log4cxx\helpers\objectimpl.h = Libs\include\log4cxx\helpers\objectimpl.h
+		Libs\include\log4cxx\helpers\objectoutputstream.h = Libs\include\log4cxx\helpers\objectoutputstream.h
+		Libs\include\log4cxx\helpers\objectptr.h = Libs\include\log4cxx\helpers\objectptr.h
+		Libs\include\log4cxx\helpers\onlyonceerrorhandler.h = Libs\include\log4cxx\helpers\onlyonceerrorhandler.h
+		Libs\include\log4cxx\helpers\optionconverter.h = Libs\include\log4cxx\helpers\optionconverter.h
+		Libs\include\log4cxx\helpers\outputstream.h = Libs\include\log4cxx\helpers\outputstream.h
+		Libs\include\log4cxx\helpers\outputstreamwriter.h = Libs\include\log4cxx\helpers\outputstreamwriter.h
+		Libs\include\log4cxx\helpers\pool.h = Libs\include\log4cxx\helpers\pool.h
+		Libs\include\log4cxx\helpers\properties.h = Libs\include\log4cxx\helpers\properties.h
+		Libs\include\log4cxx\helpers\propertyresourcebundle.h = Libs\include\log4cxx\helpers\propertyresourcebundle.h
+		Libs\include\log4cxx\helpers\reader.h = Libs\include\log4cxx\helpers\reader.h
+		Libs\include\log4cxx\helpers\relativetimedateformat.h = Libs\include\log4cxx\helpers\relativetimedateformat.h
+		Libs\include\log4cxx\helpers\resourcebundle.h = Libs\include\log4cxx\helpers\resourcebundle.h
+		Libs\include\log4cxx\helpers\serversocket.h = Libs\include\log4cxx\helpers\serversocket.h
+		Libs\include\log4cxx\helpers\simpledateformat.h = Libs\include\log4cxx\helpers\simpledateformat.h
+		Libs\include\log4cxx\helpers\socket.h = Libs\include\log4cxx\helpers\socket.h
+		Libs\include\log4cxx\helpers\socketoutputstream.h = Libs\include\log4cxx\helpers\socketoutputstream.h
+		Libs\include\log4cxx\helpers\strftimedateformat.h = Libs\include\log4cxx\helpers\strftimedateformat.h
+		Libs\include\log4cxx\helpers\strictmath.h = Libs\include\log4cxx\helpers\strictmath.h
+		Libs\include\log4cxx\helpers\stringhelper.h = Libs\include\log4cxx\helpers\stringhelper.h
+		Libs\include\log4cxx\helpers\stringtokenizer.h = Libs\include\log4cxx\helpers\stringtokenizer.h
+		Libs\include\log4cxx\helpers\synchronized.h = Libs\include\log4cxx\helpers\synchronized.h
+		Libs\include\log4cxx\helpers\syslogwriter.h = Libs\include\log4cxx\helpers\syslogwriter.h
+		Libs\include\log4cxx\helpers\system.h = Libs\include\log4cxx\helpers\system.h
+		Libs\include\log4cxx\helpers\systemerrwriter.h = Libs\include\log4cxx\helpers\systemerrwriter.h
+		Libs\include\log4cxx\helpers\systemoutwriter.h = Libs\include\log4cxx\helpers\systemoutwriter.h
+		Libs\include\log4cxx\helpers\tchar.h = Libs\include\log4cxx\helpers\tchar.h
+		Libs\include\log4cxx\helpers\thread.h = Libs\include\log4cxx\helpers\thread.h
+		Libs\include\log4cxx\helpers\threadlocal.h = Libs\include\log4cxx\helpers\threadlocal.h
+		Libs\include\log4cxx\helpers\threadspecificdata.h = Libs\include\log4cxx\helpers\threadspecificdata.h
+		Libs\include\log4cxx\helpers\timezone.h = Libs\include\log4cxx\helpers\timezone.h
+		Libs\include\log4cxx\helpers\transcoder.h = Libs\include\log4cxx\helpers\transcoder.h
+		Libs\include\log4cxx\helpers\transform.h = Libs\include\log4cxx\helpers\transform.h
+		Libs\include\log4cxx\helpers\writer.h = Libs\include\log4cxx\helpers\writer.h
+		Libs\include\log4cxx\helpers\xml.h = Libs\include\log4cxx\helpers\xml.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "filter", "filter", "{AAD4F1A3-562F-4473-B737-EB2550A0AA3E}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\filter\andfilter.h = Libs\include\log4cxx\filter\andfilter.h
+		Libs\include\log4cxx\filter\denyallfilter.h = Libs\include\log4cxx\filter\denyallfilter.h
+		Libs\include\log4cxx\filter\expressionfilter.h = Libs\include\log4cxx\filter\expressionfilter.h
+		Libs\include\log4cxx\filter\levelmatchfilter.h = Libs\include\log4cxx\filter\levelmatchfilter.h
+		Libs\include\log4cxx\filter\levelrangefilter.h = Libs\include\log4cxx\filter\levelrangefilter.h
+		Libs\include\log4cxx\filter\locationinfofilter.h = Libs\include\log4cxx\filter\locationinfofilter.h
+		Libs\include\log4cxx\filter\mapfilter.h = Libs\include\log4cxx\filter\mapfilter.h
+		Libs\include\log4cxx\filter\propertyfilter.h = Libs\include\log4cxx\filter\propertyfilter.h
+		Libs\include\log4cxx\filter\stringmatchfilter.h = Libs\include\log4cxx\filter\stringmatchfilter.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{41EFA596-DF80-4900-BD8F-793D6865B9AB}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\db\odbcappender.h = Libs\include\log4cxx\db\odbcappender.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{804D9CCB-6C7F-4170-9B87-313074A11FF3}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\log4cxx\config\propertysetter.h = Libs\include\log4cxx\config\propertysetter.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,5 +292,20 @@ Global
 		{9EAC209E-7103-4BCD-93D7-3AFA2B7C6F05} = {486B94AC-0761-45E1-9725-0D3AF34265C8}
 		{8E5AE49F-B7B1-4F59-9175-26026D00786F} = {486B94AC-0761-45E1-9725-0D3AF34265C8}
 		{2E5C5359-0975-4844-9766-6D1F32C76F19} = {EDC6A2FD-E6BA-4840-BC43-AE0906194FA8}
+		{EBFFDDC8-39DC-4E62-BD0C-EDF08D09B2A8} = {EDC6A2FD-E6BA-4840-BC43-AE0906194FA8}
+		{ED4C5E24-047E-4644-B19D-43D9C09EE347} = {EBFFDDC8-39DC-4E62-BD0C-EDF08D09B2A8}
+		{AE880763-31AC-48CF-9739-B13035A2D7B8} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{B560BF58-B811-4952-81C9-5EB11F3D922C} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{2C1489AD-5635-4E00-B09C-2EF243E079AC} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{F6EB1068-53BA-44D8-93B5-985636B741CF} = {2C1489AD-5635-4E00-B09C-2EF243E079AC}
+		{B51FEB75-18AE-42B0-813E-F861058234B3} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{E2B70CBC-746B-41B5-AAE2-68A91B4F81F1} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{4D2857C6-7669-4523-AF0D-92DDDD92A50C} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{F087055B-4816-4D1E-B8C8-938885FCA877} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{D495B34D-1FE3-44C6-878E-C7F4DB06DB2D} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{E1AF0A30-1D3E-4056-888A-3B778EEBFECB} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{AAD4F1A3-562F-4473-B737-EB2550A0AA3E} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{41EFA596-DF80-4900-BD8F-793D6865B9AB} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{804D9CCB-6C7F-4170-9B87-313074A11FF3} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
 	EndGlobalSection
 EndGlobal

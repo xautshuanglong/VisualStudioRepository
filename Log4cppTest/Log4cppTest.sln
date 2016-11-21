@@ -1,16 +1,47 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Log4cppTest", "Log4cppTest\Log4cppTest.vcxproj", "{158E4DF6-2354-4A55-BA3D-8FE8BC264085}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Log4cppConfigTest", "Log4cppConfigTest\Log4cppConfigTest.vcxproj", "{652677B2-0C4E-4BA6-A8BC-BB6A3FE54043}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3EB59E1F-BB0E-4277-A92C-67383C9D3114}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{3EB59E1F-BB0E-4277-A92C-67383C9D3114}"
 	ProjectSection(SolutionItems) = preProject
-		config\log4cpp.ini = config\log4cpp.ini
 		..\README.MD = ..\README.MD
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{593BB0E3-212B-4348-9E2F-735CB1A4D576}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "log4cpp", "log4cpp", "{2D5E1308-7B1F-45FB-AB5E-CC7C31FCFF03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{45B188CB-CCF2-478F-8F32-9031D8D114FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{9A18A1DD-C355-44FE-9A85-3AA9ADE1A812}"
+	ProjectSection(SolutionItems) = preProject
+		libs\log4cpp\x86\Debug\log4cpp.dll = libs\log4cpp\x86\Debug\log4cpp.dll
+		libs\log4cpp\x86\Debug\log4cpp.lib = libs\log4cpp\x86\Debug\log4cpp.lib
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{5E824622-2B92-44BB-84DF-8562AF30D690}"
+	ProjectSection(SolutionItems) = preProject
+		libs\log4cpp\x86\Release\log4cpp.dll = libs\log4cpp\x86\Release\log4cpp.dll
+		libs\log4cpp\x86\Release\log4cpp.lib = libs\log4cpp\x86\Release\log4cpp.lib
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{AFD8563B-A67C-4001-922C-41C279D2A0A8}"
+	ProjectSection(SolutionItems) = preProject
+		libs\log4cpp\x64\Debug\log4cpp.dll = libs\log4cpp\x64\Debug\log4cpp.dll
+		libs\log4cpp\x64\Debug\log4cpp.lib = libs\log4cpp\x64\Debug\log4cpp.lib
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{BB8239DE-0348-463D-830F-79404EA38703}"
+	ProjectSection(SolutionItems) = preProject
+		libs\log4cpp\x64\Release\log4cpp.dll = libs\log4cpp\x64\Release\log4cpp.dll
+		libs\log4cpp\x64\Release\log4cpp.lib = libs\log4cpp\x64\Release\log4cpp.lib
 	EndProjectSection
 EndProject
 Global
@@ -30,5 +61,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{593BB0E3-212B-4348-9E2F-735CB1A4D576} = {3EB59E1F-BB0E-4277-A92C-67383C9D3114}
+		{2D5E1308-7B1F-45FB-AB5E-CC7C31FCFF03} = {3EB59E1F-BB0E-4277-A92C-67383C9D3114}
+		{45B188CB-CCF2-478F-8F32-9031D8D114FD} = {2D5E1308-7B1F-45FB-AB5E-CC7C31FCFF03}
+		{9A18A1DD-C355-44FE-9A85-3AA9ADE1A812} = {45B188CB-CCF2-478F-8F32-9031D8D114FD}
+		{5E824622-2B92-44BB-84DF-8562AF30D690} = {45B188CB-CCF2-478F-8F32-9031D8D114FD}
+		{246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE} = {2D5E1308-7B1F-45FB-AB5E-CC7C31FCFF03}
+		{AFD8563B-A67C-4001-922C-41C279D2A0A8} = {246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE}
+		{BB8239DE-0348-463D-830F-79404EA38703} = {246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE}
 	EndGlobalSection
 EndGlobal

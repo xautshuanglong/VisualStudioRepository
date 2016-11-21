@@ -26,12 +26,12 @@ int main()
 	root.getAppender()->setLayout(consoleLayout);
 
 	// FileAppender testing.
-	log4cpp::FileAppender* fileAppender = new log4cpp::FileAppender("fileAppender", "..//logs//TempDebug.log",false);
+	log4cpp::FileAppender* fileAppender = new log4cpp::FileAppender("fileAppender", ".//TempDebug.log",false);
 	fileAppender->setLayout(fileLayout);
 	root.addAppender(fileAppender);
 
 	// RollingFileAppender testing.
-	log4cpp::RollingFileAppender* rollingApender = new log4cpp::RollingFileAppender("rollingAppender", "../logs//RollingFile.log",1024*1024,10);
+	log4cpp::RollingFileAppender* rollingApender = new log4cpp::RollingFileAppender("rollingAppender", ".//RollingFile.log",1024*1024,10);
 	rollingApender->setLayout(rollLayout);
 	root.addAppender(rollingApender);
 

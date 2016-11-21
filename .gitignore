@@ -158,8 +158,8 @@ $RECYCLE.BIN/
 *.db
 
 # Trace by Shuanglong
-!**/Libs/*/[Dd]ebug/
-!**/Libs/*/[Rr]elease/
-!**/Libs/*/x[86][64]/
-!**/Libs/*/x[86][64]/[Dd]ebug/
-!**/Libs/*/x[86][64]/[Rr]elease
+!**/libs/*/[Dd]ebug/
+!**/libs/*/[Rr]elease/
+!**/libs/*/x[86][64]/
+!**/libs/*/x[86][64]/[Dd]ebug/
+!**/libs/*/x[86][64]/[Rr]elease

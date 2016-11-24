@@ -5,7 +5,7 @@
 int main(int argc, char** argv)
 {
 	std::cout << "========================== Log4cxx Configure Test ==========================" << std::endl;
-	LogTool::GetInstance();
+	LogTool::GetInstance()->Info("Info testing");
 
 	return 0;
 }

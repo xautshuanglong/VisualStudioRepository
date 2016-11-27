@@ -1,4 +1,7 @@
+#include <windows.h>
 #include <iostream>
+#include <io.h>
+#include <direct.h>
 
 #include "LogTool.h"
 
@@ -18,11 +21,13 @@ LogTool::LogTool()
 
 	m_pLogger = log4cxx::Logger::getRootLogger();
 	m_pLogger->addAppender(m_pConsoleAppender);
+
+	CreateLogDirectory();
 }
 
 LogTool::~LogTool()
 {
-	std::cout << "LogTool::~LogTool()" << std::endl;
+	//std::cout << "LogTool::~LogTool()" << std::endl;
 }
 
 LogTool* LogTool::GetInstance()
@@ -40,12 +45,51 @@ LogTool* LogTool::GetInstance()
 	return m_pInstance;
 }
 
-void LogTool::Info(char *msg)
+void LogTool::CreateLogDirectory()
 {
-	//std::cout << msg << std::endl;
+	std::string strExeDir = "\\logs";
+	char curExeDir[MAX_FILENAME_LENGTH] = { 0 };
+	if (GetModuleFileName(nullptr, curExeDir, MAX_FILENAME_LENGTH) != 0)
+	{
+		strExeDir = curExeDir;
+		size_t index = strExeDir.find_last_of("\\");
+		strExeDir = strExeDir.substr(0, index) + "\\logs";
+		std::cout << strExeDir << std::endl;
+	}
+
+	if (_access(strExeDir.c_str(), 0) == -1)
+	{
+		int ret = _mkdir(strExeDir.c_str());
+		std::cout << "ret = " << ret << std::endl;
+	}
+}
+
+void LogTool::Info(log4cxx::spi::LocationInfo location, const char *fmt, ...)
+{
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN);
+	
 	if (m_pLogger != nullptr)
 	{
-		m_pLogger->info(msg, log4cxx::spi::LocationInfo("*", "*", 0));
-		//m_pLogger->info(msg);
+		m_pLogger->info(msgBuffer, location);
+	}
+}
+
+void LogTool::Info(const char *fmt, ...)
+{
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->info(msgBuffer, log4cxx::spi::LocationInfo("*", "*", 0));
+	}
+}
+
+void LogTool::Info(std::string& msg, log4cxx::spi::LocationInfo& location/* =log4cxx::spi::LocationInfo("*","*",0) */)
+{
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->info(msg, location);
 	}
 }

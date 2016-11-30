@@ -44,6 +44,74 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{BB82
 		libs\log4cpp\x64\Release\log4cpp.lib = libs\log4cpp\x64\Release\log4cpp.lib
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "log4cpp", "log4cpp", "{923CBA39-05AA-4B09-8773-67FBE7D6C04A}"
+	ProjectSection(SolutionItems) = preProject
+		libs\include\log4cpp\AbortAppender.hh = libs\include\log4cpp\AbortAppender.hh
+		libs\include\log4cpp\Appender.hh = libs\include\log4cpp\Appender.hh
+		libs\include\log4cpp\AppendersFactory.hh = libs\include\log4cpp\AppendersFactory.hh
+		libs\include\log4cpp\AppenderSkeleton.hh = libs\include\log4cpp\AppenderSkeleton.hh
+		libs\include\log4cpp\BasicConfigurator.hh = libs\include\log4cpp\BasicConfigurator.hh
+		libs\include\log4cpp\BasicLayout.hh = libs\include\log4cpp\BasicLayout.hh
+		libs\include\log4cpp\BoostThreads.hh = libs\include\log4cpp\BoostThreads.hh
+		libs\include\log4cpp\BufferingAppender.hh = libs\include\log4cpp\BufferingAppender.hh
+		libs\include\log4cpp\Category.hh = libs\include\log4cpp\Category.hh
+		libs\include\log4cpp\CategoryStream.hh = libs\include\log4cpp\CategoryStream.hh
+		libs\include\log4cpp\config-MinGW32.h = libs\include\log4cpp\config-MinGW32.h
+		libs\include\log4cpp\config-openvms.h = libs\include\log4cpp\config-openvms.h
+		libs\include\log4cpp\config-win32-stlport-boost.h = libs\include\log4cpp\config-win32-stlport-boost.h
+		libs\include\log4cpp\config-win32.h = libs\include\log4cpp\config-win32.h
+		libs\include\log4cpp\Configurator.hh = libs\include\log4cpp\Configurator.hh
+		libs\include\log4cpp\convenience.h = libs\include\log4cpp\convenience.h
+		libs\include\log4cpp\DailyRollingFileAppender.hh = libs\include\log4cpp\DailyRollingFileAppender.hh
+		libs\include\log4cpp\DummyThreads.hh = libs\include\log4cpp\DummyThreads.hh
+		libs\include\log4cpp\Export.hh = libs\include\log4cpp\Export.hh
+		libs\include\log4cpp\FactoryParams.hh = libs\include\log4cpp\FactoryParams.hh
+		libs\include\log4cpp\FileAppender.hh = libs\include\log4cpp\FileAppender.hh
+		libs\include\log4cpp\Filter.hh = libs\include\log4cpp\Filter.hh
+		libs\include\log4cpp\FixedContextCategory.hh = libs\include\log4cpp\FixedContextCategory.hh
+		libs\include\log4cpp\HierarchyMaintainer.hh = libs\include\log4cpp\HierarchyMaintainer.hh
+		libs\include\log4cpp\IdsaAppender.hh = libs\include\log4cpp\IdsaAppender.hh
+		libs\include\log4cpp\Layout.hh = libs\include\log4cpp\Layout.hh
+		libs\include\log4cpp\LayoutAppender.hh = libs\include\log4cpp\LayoutAppender.hh
+		libs\include\log4cpp\LayoutsFactory.hh = libs\include\log4cpp\LayoutsFactory.hh
+		libs\include\log4cpp\LevelEvaluator.hh = libs\include\log4cpp\LevelEvaluator.hh
+		libs\include\log4cpp\LoggingEvent.hh = libs\include\log4cpp\LoggingEvent.hh
+		libs\include\log4cpp\Manipulator.hh = libs\include\log4cpp\Manipulator.hh
+		libs\include\log4cpp\MSThreads.hh = libs\include\log4cpp\MSThreads.hh
+		libs\include\log4cpp\NDC.hh = libs\include\log4cpp\NDC.hh
+		libs\include\log4cpp\NTEventLogAppender.hh = libs\include\log4cpp\NTEventLogAppender.hh
+		libs\include\log4cpp\OmniThreads.hh = libs\include\log4cpp\OmniThreads.hh
+		libs\include\log4cpp\OstreamAppender.hh = libs\include\log4cpp\OstreamAppender.hh
+		libs\include\log4cpp\PassThroughLayout.hh = libs\include\log4cpp\PassThroughLayout.hh
+		libs\include\log4cpp\PatternLayout.hh = libs\include\log4cpp\PatternLayout.hh
+		libs\include\log4cpp\Portability.hh = libs\include\log4cpp\Portability.hh
+		libs\include\log4cpp\Priority.hh = libs\include\log4cpp\Priority.hh
+		libs\include\log4cpp\PropertyConfigurator.hh = libs\include\log4cpp\PropertyConfigurator.hh
+		libs\include\log4cpp\PThreads.hh = libs\include\log4cpp\PThreads.hh
+		libs\include\log4cpp\RemoteSyslogAppender.hh = libs\include\log4cpp\RemoteSyslogAppender.hh
+		libs\include\log4cpp\RollingFileAppender.hh = libs\include\log4cpp\RollingFileAppender.hh
+		libs\include\log4cpp\SimpleConfigurator.hh = libs\include\log4cpp\SimpleConfigurator.hh
+		libs\include\log4cpp\SimpleLayout.hh = libs\include\log4cpp\SimpleLayout.hh
+		libs\include\log4cpp\SmtpAppender.hh = libs\include\log4cpp\SmtpAppender.hh
+		libs\include\log4cpp\StringQueueAppender.hh = libs\include\log4cpp\StringQueueAppender.hh
+		libs\include\log4cpp\SyslogAppender.hh = libs\include\log4cpp\SyslogAppender.hh
+		libs\include\log4cpp\Threading.hh = libs\include\log4cpp\Threading.hh
+		libs\include\log4cpp\TimeStamp.hh = libs\include\log4cpp\TimeStamp.hh
+		libs\include\log4cpp\TriggeringEventEvaluator.hh = libs\include\log4cpp\TriggeringEventEvaluator.hh
+		libs\include\log4cpp\TriggeringEventEvaluatorFactory.hh = libs\include\log4cpp\TriggeringEventEvaluatorFactory.hh
+		libs\include\log4cpp\Win32DebugAppender.hh = libs\include\log4cpp\Win32DebugAppender.hh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "threading", "threading", "{0F2E7509-F55F-4BAF-9B72-FF477CC50DF5}"
+	ProjectSection(SolutionItems) = preProject
+		libs\include\log4cpp\threading\BoostThreads.hh = libs\include\log4cpp\threading\BoostThreads.hh
+		libs\include\log4cpp\threading\DummyThreads.hh = libs\include\log4cpp\threading\DummyThreads.hh
+		libs\include\log4cpp\threading\MSThreads.hh = libs\include\log4cpp\threading\MSThreads.hh
+		libs\include\log4cpp\threading\OmniThreads.hh = libs\include\log4cpp\threading\OmniThreads.hh
+		libs\include\log4cpp\threading\PThreads.hh = libs\include\log4cpp\threading\PThreads.hh
+		libs\include\log4cpp\threading\Threading.hh = libs\include\log4cpp\threading\Threading.hh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -71,5 +139,7 @@ Global
 		{246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE} = {2D5E1308-7B1F-45FB-AB5E-CC7C31FCFF03}
 		{AFD8563B-A67C-4001-922C-41C279D2A0A8} = {246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE}
 		{BB8239DE-0348-463D-830F-79404EA38703} = {246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE}
+		{923CBA39-05AA-4B09-8773-67FBE7D6C04A} = {593BB0E3-212B-4348-9E2F-735CB1A4D576}
+		{0F2E7509-F55F-4BAF-9B72-FF477CC50DF5} = {923CBA39-05AA-4B09-8773-67FBE7D6C04A}
 	EndGlobalSection
 EndGlobal

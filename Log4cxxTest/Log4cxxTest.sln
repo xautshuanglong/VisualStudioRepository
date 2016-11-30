@@ -24,8 +24,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{CCA1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{9EAC209E-7103-4BCD-93D7-3AFA2B7C6F05}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\log4cxx\x64\Debug\log4cxx.dll = Libs\log4cxx\x64\Debug\log4cxx.dll
+		Libs\log4cxx\x64\Debug\log4cxx.lib = Libs\log4cxx\x64\Debug\log4cxx.lib
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{8E5AE49F-B7B1-4F59-9175-26026D00786F}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\log4cxx\x64\Release\log4cxx.dll = Libs\log4cxx\x64\Release\log4cxx.dll
+		Libs\log4cxx\x64\Release\log4cxx.lib = Libs\log4cxx\x64\Release\log4cxx.lib
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "log4cxx", "log4cxx", "{2E5C5359-0975-4844-9766-6D1F32C76F19}"
 EndProject

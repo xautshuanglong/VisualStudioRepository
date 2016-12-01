@@ -5,9 +5,9 @@
 
 #include "LogTool.h"
 
-LogTool* LogTool::m_pInstance = nullptr;
+LogTool* volatile LogTool::m_pInstance = nullptr;
 LogTool::Helpper LogTool::helpper;
-//std::mutex LogTool::m_instanceMutex;
+std::mutex LogTool::m_instanceMutex;
 
 LogTool::LogTool()
 {
@@ -28,19 +28,21 @@ LogTool::LogTool()
 LogTool::~LogTool()
 {
 	//std::cout << "LogTool::~LogTool()" << std::endl;
+	//delete m_pConsoleAppender;
+	//delete m_pPatternLayout;
 }
 
 LogTool* LogTool::GetInstance()
 {
-	//if (m_pInstance == nullptr)
-	//{
-	//	m_instanceMutex.lock();
-	//	if (m_pInstance == nullptr)
-	//	{
-	//		m_pInstance = new LogTool();
-	//	}
-	//	m_instanceMutex.unlock();
-	//}
+	if (m_pInstance == nullptr)
+	{
+		m_instanceMutex.lock();
+		if (m_pInstance == nullptr)
+		{
+			m_pInstance = new LogTool();
+		}
+		m_instanceMutex.unlock();
+	}
 
 	return m_pInstance;
 }

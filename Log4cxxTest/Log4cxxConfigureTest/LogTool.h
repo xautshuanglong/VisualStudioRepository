@@ -18,10 +18,9 @@ va_start(argList, fmt); \
 vsnprintf(msgBuffer, length, fmt, argList); \
 va_end(argList); 
 
-class LogTool
+volatile class LogTool
 {
 public:
-	~LogTool();
 	static LogTool* GetInstance();
 
 	void Info(const char *fmat, ...);
@@ -30,9 +29,10 @@ public:
 
 private:
 	LogTool();
-	static LogTool* m_pInstance;
+	~LogTool();
+	static LogTool* volatile m_pInstance;
 
-	//static std::mutex m_instanceMutex;
+	static std::mutex m_instanceMutex;
 	log4cxx::ConsoleAppenderPtr m_pConsoleAppender;
 	log4cxx::PatternLayoutPtr m_pPatternLayout;
 	log4cxx::LoggerPtr m_pLogger;
@@ -45,16 +45,16 @@ private:
 	public:
 		Helpper()
 		{
-			m_pInstance = new LogTool();
+			//m_pInstance = new LogTool();
 		}
 		~Helpper()
 		{
-			//m_instanceMutex.lock();
+			m_instanceMutex.lock();
 			if (m_pInstance != nullptr)
 			{
 				delete m_pInstance;
 			}
-			//m_instanceMutex.unlock();
+			m_instanceMutex.unlock();
 		}
 	};
 	static Helpper helpper;

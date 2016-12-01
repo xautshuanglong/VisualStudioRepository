@@ -28,8 +28,6 @@ LogTool::LogTool()
 LogTool::~LogTool()
 {
 	//std::cout << "LogTool::~LogTool()" << std::endl;
-	//delete m_pConsoleAppender;
-	//delete m_pPatternLayout;
 }
 
 LogTool* LogTool::GetInstance()

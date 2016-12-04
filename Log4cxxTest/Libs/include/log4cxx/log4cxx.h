@@ -22,8 +22,12 @@
  * Edit log4cxx.hw instead
  *
  */
-
+#ifdef _UNICODE
 #define LOG4CXX_LOGCHAR_IS_UTF8 0
+#else
+#define LOG4CXX_LOGCHAR_IS_UTF8 1
+#endif
+
 #if LOG4CXX_LOGCHAR_IS_UTF8
 #define LOG4CXX_LOGCHAR_IS_WCHAR 0
 #else

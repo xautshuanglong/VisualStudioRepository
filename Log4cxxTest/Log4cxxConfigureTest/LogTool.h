@@ -63,6 +63,7 @@ private:
 	void CreateLogDirectory();
 	void BasicConfigration();
 	void ChangeAppenderFilter();
+	log4cxx::spi::LocationInfo GetShortName(log4cxx::spi::LocationInfo originLocal);
 
 	class Helpper
 	{

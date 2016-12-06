@@ -69,7 +69,7 @@ void LogTool::BasicConfigration()
 	m_pRollingFileAppender = new log4cxx::RollingFileAppender();
 
 	// 输出日志到控制台
-	pTempFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{HH:mm:ss.SSS} [%-5p] %M %m (%F:%L)%n")));
+	pTempFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{HH:mm:ss.SSS} [%-5p] [%M] %m (%F:%L)%n")));
 	m_pConsoleAppender->setLayout(pTempFileLayout);
 	//m_pConsoleAppender->addFilter();
 
@@ -79,7 +79,7 @@ void LogTool::BasicConfigration()
 	m_pFileAppender->setAppend(false);
 
 	// 输出日志到回滚文件（用于长期记录）
-	pRollingFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %M %m (%F:%L)%n")));
+	pRollingFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%M] %m (%F:%L)%n")));
 	m_pRollingFileAppender->setLayout(pRollingFileLayout);
 	m_pRollingFileAppender->setFile(m_strLogDir + LOG4CXX_STR("\\RollingFile.log"));
 	//m_pRollingFileAppender->setAppend(true); // default mode is true;
@@ -135,7 +135,7 @@ void LogTool::ChangeAppenderFilter()
 	}
 }
 
-log4cxx::spi::LocationInfo LogTool::GetShortName(log4cxx::spi::LocationInfo originLocal)
+log4cxx::spi::LocationInfo* LogTool::GetShortName(log4cxx::spi::LocationInfo originLocal)
 {
 	std::string strFileName(originLocal.getFileName());
 	size_t index = strFileName.find_last_of('\\');
@@ -144,18 +144,20 @@ log4cxx::spi::LocationInfo LogTool::GetShortName(log4cxx::spi::LocationInfo orig
 		strFileName.erase(0, index + 1);
 	}
 
-	//std::string strMethodName = originLocal.getMethodName();
-	//index = strMethodName.find_last_of(' ');
-	//if (index != std::string::npos)
-	//{
-	//	strMethodName = strMethodName.substr(index + 1);
-	//}
+	char methodBuff[100];
+	strcpy_s(methodBuff, originLocal.getMethodName().c_str());
+	std::string strMethodName(methodBuff);
+	index = strMethodName.find_last_of(' ');
+	if (index != std::string::npos)
+	{
+		strMethodName = strMethodName.substr(index + 1);
+		strMethodName.append("\0");
+	}
 
-	log4cxx::spi::LocationInfo newLocation(strFileName.c_str(), originLocal.getMethodName().c_str(), originLocal.getLineNumber());
-	std::cout << "newLocation: " << newLocation.getFileName() << "  " << newLocation.getMethodName() << std::endl;
+	log4cxx::spi::LocationInfo *pRetLocation = new log4cxx::spi::LocationInfo(strFileName.c_str(), strMethodName.c_str(), originLocal.getLineNumber());
+	//std::cout << "pRetLocation: " << pRetLocation->getFileName() << "  " << pRetLocation->getMethodName() << "  " << pRetLocation->getLineNumber() << std::endl;
 
-	//return log4cxx::spi::LocationInfo("haha", "hehe", 110);
-	return newLocation;
+	return pRetLocation;
 }
 
 void LogTool::Info(log4cxx::spi::LocationInfo location, const char *fmt, ...)
@@ -190,7 +192,14 @@ void LogTool::Info(std::string& msg, log4cxx::spi::LocationInfo& location/* =log
 
 	if (m_pLogger != nullptr)
 	{
-		
+		//GetShortName(location);
+		//log4cxx::spi::LocationInfo tempLocation = GetShortName(location);
+		//std::cout << "tempLocation: " << tempLocation.getFileName() << "  " << tempLocation.getMethodName() << "  " << tempLocation.getLineNumber() << std::endl;
+
+		//log4cxx::spi::LocationInfo *pTempLocation = GetShortName(location);
+		//std::cout << "pTempLocation: " << pTempLocation->getFileName() << "  " << pTempLocation->getMethodName() << "  " << pTempLocation->getLineNumber() << std::endl;
+
 		m_pLogger->info(msg, location);
+		//delete pTempLocation;
 	}
 }

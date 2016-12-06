@@ -63,7 +63,7 @@ private:
 	void CreateLogDirectory();
 	void BasicConfigration();
 	void ChangeAppenderFilter();
-	log4cxx::spi::LocationInfo GetShortName(log4cxx::spi::LocationInfo originLocal);
+	log4cxx::spi::LocationInfo* GetShortName(log4cxx::spi::LocationInfo originLocal);// 普通指针，自行释放
 
 	class Helpper
 	{

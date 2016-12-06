@@ -135,29 +135,22 @@ void LogTool::ChangeAppenderFilter()
 	}
 }
 
-log4cxx::spi::LocationInfo* LogTool::GetShortName(log4cxx::spi::LocationInfo originLocal)
+log4cxx::spi::LocationInfo LogTool::GetShortName(std::string fileName, std::string methodName, int lineNumber)
 {
-	std::string strFileName(originLocal.getFileName());
-	size_t index = strFileName.find_last_of('\\');
+	size_t index = fileName.find_last_of('\\');
 	if (index != std::string::npos)
 	{
-		strFileName.erase(0, index + 1);
+		fileName.erase(0, index + 1);
 	}
 
-	char methodBuff[100];
-	strcpy_s(methodBuff, originLocal.getMethodName().c_str());
-	std::string strMethodName(methodBuff);
-	index = strMethodName.find_last_of(' ');
+	index = methodName.find_last_of(' ');
 	if (index != std::string::npos)
 	{
-		strMethodName = strMethodName.substr(index + 1);
-		strMethodName.append("\0");
+		methodName = methodName.substr(index + 1);
 	}
 
-	log4cxx::spi::LocationInfo *pRetLocation = new log4cxx::spi::LocationInfo(strFileName.c_str(), strMethodName.c_str(), originLocal.getLineNumber());
-	//std::cout << "pRetLocation: " << pRetLocation->getFileName() << "  " << pRetLocation->getMethodName() << "  " << pRetLocation->getLineNumber() << std::endl;
-
-	return pRetLocation;
+	log4cxx::spi::LocationInfo retValue(fileName.c_str(), methodName.c_str(), lineNumber);
+	return retValue;
 }
 
 void LogTool::Info(log4cxx::spi::LocationInfo location, const char *fmt, ...)
@@ -199,7 +192,8 @@ void LogTool::Info(std::string& msg, log4cxx::spi::LocationInfo& location/* =log
 		//log4cxx::spi::LocationInfo *pTempLocation = GetShortName(location);
 		//std::cout << "pTempLocation: " << pTempLocation->getFileName() << "  " << pTempLocation->getMethodName() << "  " << pTempLocation->getLineNumber() << std::endl;
 
-		m_pLogger->info(msg, location);
-		//delete pTempLocation;
+		std::string fileName(location.getFileName());
+		std::string methodName(location.getMethodName());
+		m_pLogger->info(msg, GetShortName(fileName, methodName, location.getLineNumber()));
 	}
 }

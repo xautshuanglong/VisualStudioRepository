@@ -3,6 +3,19 @@
 #include "LogTool.h"
 
 class ReturnObjTest;
+ReturnObjTest* ReturnObjPointerTestFunc();
+ReturnObjTest ReturnObjTestFunc();
+
+class ReturnObjTest
+{
+public:
+	ReturnObjTest() { std::cout << "ReturnObjTest constructor ..." << std::endl; }
+	~ReturnObjTest() { std::cout << "ReturnObjTest destructor ..." << std::endl; }
+	ReturnObjTest(const ReturnObjTest &originObj) { std::cout << "Call copy constructor ..." << std::endl; }
+	ReturnObjTest& operator=(const ReturnObjTest &originObj) { std::cout << "Call assign function ..." << std::endl; return *this; }
+
+	void IsAlive() { std::cout << "I'm alive." << std::endl; }
+};
 
 int main(int argc, char** argv)
 {
@@ -32,14 +45,40 @@ int main(int argc, char** argv)
 	//log4cxx::spi::LocationInfo copyConstruct(localTest);
 	//std::cout << "copyConstruct: " << copyConstruct.getFileName() << "  " << copyConstruct.getMethodName() << std::endl;
 
+	std::cout << "========================== Return object Test ==========================" << std::endl;
+	//ReturnObjTest *pTemp = ReturnObjPointerTestFunc();
+	//std::cout << "Inside main: ";
+	//pTemp->IsAlive();
+	//delete pTemp;
+
+	//std::cout << "Copyt Test" << std::endl;
+	//ReturnObjTest copyTest(*pTemp);
+
+	//std::cout << "Assignment Test" << std::endl;
+	//ReturnObjTest assignTest;
+	//assignTest= copyTest;
+
+	//ReturnObjTest retVate;
+	//retVate = ReturnObjTestFunc();
+	//retVate.IsAlive();
+
 	return 0;
 }
 
-class ReturnObjTest
+ReturnObjTest* ReturnObjPointerTestFunc()
 {
-public:
-	ReturnObjTest() { std::cout << "ReturnObjTest constructor ..." << std::endl; }
-	~ReturnObjTest() { std::cout << "ReturnObjTest destructor ..." << std::endl; }
+	ReturnObjTest *pRetObj = new ReturnObjTest();
+	std::cout << "Inside ReturnObjPointerTestFunc: ";
+	pRetObj->IsAlive();
 
-private:
-};
+	return pRetObj;
+}
+
+ReturnObjTest ReturnObjTestFunc()
+{
+	ReturnObjTest retValue;
+	std::cout << "Inside ReturnObjTestFunc: ";
+	retValue.IsAlive();
+
+	return retValue;
+}

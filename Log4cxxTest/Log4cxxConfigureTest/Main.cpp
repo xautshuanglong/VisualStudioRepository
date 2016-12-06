@@ -2,6 +2,8 @@
 
 #include "LogTool.h"
 
+class ReturnObjTest;
+
 int main(int argc, char** argv)
 {
 	std::cout << "========================== Log4cxx Configure Test ==========================" << std::endl;
@@ -32,3 +34,12 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+
+class ReturnObjTest
+{
+public:
+	ReturnObjTest() { std::cout << "ReturnObjTest constructor ..." << std::endl; }
+	~ReturnObjTest() { std::cout << "ReturnObjTest destructor ..." << std::endl; }
+
+private:
+};

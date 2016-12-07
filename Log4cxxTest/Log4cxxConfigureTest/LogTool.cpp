@@ -135,22 +135,27 @@ void LogTool::ChangeAppenderFilter()
 	}
 }
 
-log4cxx::spi::LocationInfo LogTool::GetShortName(std::string fileName, std::string methodName, int lineNumber)
+log4cxx::spi::LocationInfo LogTool::GetShortName(log4cxx::spi::LocationInfo location)
 {
-	size_t index = fileName.find_last_of('\\');
+	std::string strFileName(location.getFileName());
+	std::string strMethodName(location.getMethodName());
+
+	size_t index = strFileName.find_last_of('\\');
 	if (index != std::string::npos)
 	{
-		fileName.erase(0, index + 1);
+		strFileName.erase(0, index + 1);
 	}
 
-	index = methodName.find_last_of(' ');
+	index = strMethodName.find_last_of(' ');
 	if (index != std::string::npos)
 	{
-		methodName = methodName.substr(index + 1);
+		strMethodName = strMethodName.substr(index + 1);
 	}
 
-	log4cxx::spi::LocationInfo retValue(fileName.c_str(), methodName.c_str(), lineNumber);
-	return retValue;
+	strcpy_s(m_fileNameBuf, strFileName.c_str());
+	strcpy_s(m_methodNameBuf, strMethodName.c_str());
+
+	return log4cxx::spi::LocationInfo(m_fileNameBuf, m_methodNameBuf, location.getLineNumber());
 }
 
 void LogTool::Info(log4cxx::spi::LocationInfo location, const char *fmt, ...)
@@ -162,7 +167,7 @@ void LogTool::Info(log4cxx::spi::LocationInfo location, const char *fmt, ...)
 	
 	if (m_pLogger != nullptr)
 	{
-		m_pLogger->info(msgBuffer, location);
+		m_pLogger->info(msgBuffer, GetShortName(location));
 	}
 }
 
@@ -185,15 +190,6 @@ void LogTool::Info(std::string& msg, log4cxx::spi::LocationInfo& location/* =log
 
 	if (m_pLogger != nullptr)
 	{
-		//GetShortName(location);
-		//log4cxx::spi::LocationInfo tempLocation = GetShortName(location);
-		//std::cout << "tempLocation: " << tempLocation.getFileName() << "  " << tempLocation.getMethodName() << "  " << tempLocation.getLineNumber() << std::endl;
-
-		//log4cxx::spi::LocationInfo *pTempLocation = GetShortName(location);
-		//std::cout << "pTempLocation: " << pTempLocation->getFileName() << "  " << pTempLocation->getMethodName() << "  " << pTempLocation->getLineNumber() << std::endl;
-
-		std::string fileName(location.getFileName());
-		std::string methodName(location.getMethodName());
-		m_pLogger->info(msg, GetShortName(fileName, methodName, location.getLineNumber()));
+		m_pLogger->info(msg, GetShortName(location));
 	}
 }

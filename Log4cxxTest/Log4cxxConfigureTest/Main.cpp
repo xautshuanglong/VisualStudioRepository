@@ -14,7 +14,7 @@ public:
 	ReturnObjTest(const ReturnObjTest &originObj) { std::cout << "Call copy constructor ..." << std::endl; }
 	ReturnObjTest& operator=(const ReturnObjTest &originObj) { std::cout << "Call assign function ..." << std::endl; return *this; }
 
-	void IsAlive() { std::cout << "I'm alive." << std::endl; }
+	void IsAlive() { LogTool::GetInstance()->Info(LOG4CXX_LOCATION, "I'm alive"); }
 };
 
 int main(int argc, char** argv)
@@ -46,9 +46,9 @@ int main(int argc, char** argv)
 	//std::cout << "copyConstruct: " << copyConstruct.getFileName() << "  " << copyConstruct.getMethodName() << std::endl;
 
 	std::cout << "========================== Return object Test ==========================" << std::endl;
-	//ReturnObjTest *pTemp = ReturnObjPointerTestFunc();
-	//std::cout << "Inside main: ";
-	//pTemp->IsAlive();
+	ReturnObjTest *pTemp = ReturnObjPointerTestFunc();
+	std::cout << "Inside main: ";
+	pTemp->IsAlive();
 	//delete pTemp;
 
 	//std::cout << "Copyt Test" << std::endl;

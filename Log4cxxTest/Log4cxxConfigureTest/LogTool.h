@@ -38,9 +38,29 @@ volatile class LogTool
 public:
 	static LogTool* GetInstance();
 
+	void Trace(const char *fmat, ...);
+	void Trace(log4cxx::spi::LocationInfo location, const char *fmat, ...);
+	void Trace(std::string& msg, log4cxx::spi::LocationInfo& location = log4cxx::spi::LocationInfo("", "", 0));
+
+	void Debug(const char *fmat, ...);
+	void Debug(log4cxx::spi::LocationInfo location, const char *fmat, ...);
+	void Debug(std::string& msg, log4cxx::spi::LocationInfo& location = log4cxx::spi::LocationInfo("", "", 0));
+
 	void Info(const char *fmat, ...);
 	void Info(log4cxx::spi::LocationInfo location, const char *fmat, ...);
-	void Info(std::string& msg, log4cxx::spi::LocationInfo& location=log4cxx::spi::LocationInfo("*","*",0));
+	void Info(std::string& msg, log4cxx::spi::LocationInfo& location = log4cxx::spi::LocationInfo("", "", 0));
+
+	void Warn(const char *fmat, ...);
+	void Warn(log4cxx::spi::LocationInfo location, const char *fmat, ...);
+	void Warn(std::string& msg, log4cxx::spi::LocationInfo& location = log4cxx::spi::LocationInfo("", "", 0));
+
+	void Error(const char *fmat, ...);
+	void Error(log4cxx::spi::LocationInfo location, const char *fmat, ...);
+	void Error(std::string& msg, log4cxx::spi::LocationInfo& location = log4cxx::spi::LocationInfo("", "", 0));
+
+	void Fatal(const char *fmat, ...);
+	void Fatal(log4cxx::spi::LocationInfo location, const char *fmat, ...);
+	void Fatal(std::string& msg, log4cxx::spi::LocationInfo& location = log4cxx::spi::LocationInfo("", "", 0));
 
 private:
 	LogTool();

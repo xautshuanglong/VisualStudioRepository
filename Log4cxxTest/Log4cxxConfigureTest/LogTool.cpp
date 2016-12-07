@@ -69,7 +69,7 @@ void LogTool::BasicConfigration()
 	m_pRollingFileAppender = new log4cxx::RollingFileAppender();
 
 	// 输出日志到控制台
-	pTempFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{HH:mm:ss.SSS} [%-5p] [%M] %m (%F:%L)%n")));
+	pTempFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{HH:mm:ss.SSS} [%-5p] %m    <- %C::%M (%F:%L)%n")));
 	m_pConsoleAppender->setLayout(pTempFileLayout);
 	//m_pConsoleAppender->addFilter();
 
@@ -79,7 +79,7 @@ void LogTool::BasicConfigration()
 	m_pFileAppender->setAppend(false);
 
 	// 输出日志到回滚文件（用于长期记录）
-	pRollingFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%M] %m (%F:%L)%n")));
+	pRollingFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %m    <- %C::%M (%F:%L)%n")));
 	m_pRollingFileAppender->setLayout(pRollingFileLayout);
 	m_pRollingFileAppender->setFile(m_strLogDir + LOG4CXX_STR("\\RollingFile.log"));
 	//m_pRollingFileAppender->setAppend(true); // default mode is true;
@@ -137,25 +137,108 @@ void LogTool::ChangeAppenderFilter()
 
 log4cxx::spi::LocationInfo LogTool::GetShortName(log4cxx::spi::LocationInfo location)
 {
-	std::string strFileName(location.getFileName());
-	std::string strMethodName(location.getMethodName());
+	std::string strFileName(location.getFileName());// 暂存文件名
+	std::string strClassName = location.getClassName();// 暂存类名
+	std::string strMethodName(location.getMethodName());// 暂存方法名
 
+	// 缩短文件名
 	size_t index = strFileName.find_last_of('\\');
 	if (index != std::string::npos)
 	{
 		strFileName.erase(0, index + 1);
 	}
 
+	// 缩短方法名
 	index = strMethodName.find_last_of(' ');
 	if (index != std::string::npos)
 	{
 		strMethodName = strMethodName.substr(index + 1);
 	}
 
+	// 加入类名
+	if (strClassName.length() > 0)
+	{
+		strClassName.append("::");
+		strMethodName.insert(0, strClassName);
+	}
+
+	// 转移字符串，否则 std::string 析构时清空字符缓存区
 	strcpy_s(m_fileNameBuf, strFileName.c_str());
 	strcpy_s(m_methodNameBuf, strMethodName.c_str());
 
 	return log4cxx::spi::LocationInfo(m_fileNameBuf, m_methodNameBuf, location.getLineNumber());
+}
+
+void LogTool::Trace(log4cxx::spi::LocationInfo location, const char *fmt, ...)
+{
+	if (m_pLogger->isTraceEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->trace(msgBuffer, GetShortName(location));
+	}
+}
+
+void LogTool::Trace(const char *fmt, ...)
+{
+	if (m_pLogger->isTraceEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->trace(msgBuffer, log4cxx::spi::LocationInfo("", "", 0));
+	}
+}
+
+void LogTool::Trace(std::string& msg, log4cxx::spi::LocationInfo& location/* =log4cxx::spi::LocationInfo("*","*",0) */)
+{
+	if (m_pLogger->isTraceEnabled() == false) return;
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->trace(msg, GetShortName(location));
+	}
+}
+
+void LogTool::Debug(log4cxx::spi::LocationInfo location, const char *fmt, ...)
+{
+	if (m_pLogger->isDebugEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->debug(msgBuffer, GetShortName(location));
+	}
+}
+
+void LogTool::Debug(const char *fmt, ...)
+{
+	if (m_pLogger->isDebugEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->debug(msgBuffer, log4cxx::spi::LocationInfo("", "", 0));
+	}
+}
+
+void LogTool::Debug(std::string& msg, log4cxx::spi::LocationInfo& location/* =log4cxx::spi::LocationInfo("*","*",0) */)
+{
+	if (m_pLogger->isDebugEnabled() == false) return;
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->debug(msg, GetShortName(location));
+	}
 }
 
 void LogTool::Info(log4cxx::spi::LocationInfo location, const char *fmt, ...)
@@ -163,7 +246,7 @@ void LogTool::Info(log4cxx::spi::LocationInfo location, const char *fmt, ...)
 	if (m_pLogger->isInfoEnabled() == false) return;
 
 	char msgBuffer[MAX_MSG_BUFFER_LEN];
-	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN);
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
 	
 	if (m_pLogger != nullptr)
 	{
@@ -180,7 +263,7 @@ void LogTool::Info(const char *fmt, ...)
 
 	if (m_pLogger != nullptr)
 	{
-		m_pLogger->info(msgBuffer, log4cxx::spi::LocationInfo("*", "*", 0));
+		m_pLogger->info(msgBuffer, log4cxx::spi::LocationInfo("", "", 0));
 	}
 }
 
@@ -191,5 +274,113 @@ void LogTool::Info(std::string& msg, log4cxx::spi::LocationInfo& location/* =log
 	if (m_pLogger != nullptr)
 	{
 		m_pLogger->info(msg, GetShortName(location));
+	}
+}
+
+void LogTool::Warn(log4cxx::spi::LocationInfo location, const char *fmt, ...)
+{
+	if (m_pLogger->isWarnEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->warn(msgBuffer, GetShortName(location));
+	}
+}
+
+void LogTool::Warn(const char *fmt, ...)
+{
+	if (m_pLogger->isWarnEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->warn(msgBuffer, log4cxx::spi::LocationInfo("", "", 0));
+	}
+}
+
+void LogTool::Warn(std::string& msg, log4cxx::spi::LocationInfo& location/* =log4cxx::spi::LocationInfo("*","*",0) */)
+{
+	if (m_pLogger->isWarnEnabled() == false) return;
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->warn(msg, GetShortName(location));
+	}
+}
+
+void LogTool::Error(log4cxx::spi::LocationInfo location, const char *fmt, ...)
+{
+	if (m_pLogger->isErrorEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->error(msgBuffer, GetShortName(location));
+	}
+}
+
+void LogTool::Error(const char *fmt, ...)
+{
+	if (m_pLogger->isErrorEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->error(msgBuffer, log4cxx::spi::LocationInfo("", "", 0));
+	}
+}
+
+void LogTool::Error(std::string& msg, log4cxx::spi::LocationInfo& location/* =log4cxx::spi::LocationInfo("*","*",0) */)
+{
+	if (m_pLogger->isErrorEnabled() == false) return;
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->error(msg, GetShortName(location));
+	}
+}
+
+void LogTool::Fatal(log4cxx::spi::LocationInfo location, const char *fmt, ...)
+{
+	if (m_pLogger->isFatalEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->fatal(msgBuffer, GetShortName(location));
+	}
+}
+
+void LogTool::Fatal(const char *fmt, ...)
+{
+	if (m_pLogger->isFatalEnabled() == false) return;
+
+	char msgBuffer[MAX_MSG_BUFFER_LEN];
+	VA_ARGUMENTS_SPRINT(fmt, msgBuffer, MAX_MSG_BUFFER_LEN - 1);
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->fatal(msgBuffer, log4cxx::spi::LocationInfo("", "", 0));
+	}
+}
+
+void LogTool::Fatal(std::string& msg, log4cxx::spi::LocationInfo& location/* =log4cxx::spi::LocationInfo("*","*",0) */)
+{
+	if (m_pLogger->isFatalEnabled() == false) return;
+
+	if (m_pLogger != nullptr)
+	{
+		m_pLogger->fatal(msg, GetShortName(location));
 	}
 }

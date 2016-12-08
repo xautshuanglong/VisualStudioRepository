@@ -102,7 +102,7 @@
       <AdditionalDependencies>log4cxx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y /R $(SolutionDir)Libs\log4cxx\$(PlatformShortName)\$(Configuration)\*.dll $(OutDir)</Command>
+      <Command>xcopy /Y /R /F /D $(SolutionDir)Libs\log4cxx\$(PlatformShortName)\$(Configuration)\*.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

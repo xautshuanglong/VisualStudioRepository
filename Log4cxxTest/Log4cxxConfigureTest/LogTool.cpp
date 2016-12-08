@@ -13,13 +13,23 @@ LogTool::LogTool()
 {
 	//std::cout << "LogTool::LogTool()" << std::endl;
 	CreateLogDirectory();
-	BasicConfigration();
+	
+	if (SL_ACCESS((m_strCurExeDir+TEXT("\\config\\log4cxx.properties")).c_str(), 0) != -1)
+	{
+		log4cxx::PropertyConfigurator::configureAndWatch(m_strCurExeDir + TEXT("\\config\\log4cxx.properties"));
+	}
+	else
+	{
+		BasicConfiguration();
+	}
+	m_pLogger = log4cxx::Logger::getRootLogger();
 	ChangeAppenderFilter();
 }
 
 LogTool::~LogTool()
 {
 	//std::cout << "LogTool::~LogTool()" << std::endl;
+	log4cxx::LogManager::shutdown();
 }
 
 LogTool* LogTool::GetInstance()
@@ -39,25 +49,25 @@ LogTool* LogTool::GetInstance()
 
 void LogTool::CreateLogDirectory()
 {
-	SL_TSTRING strExeDir = TEXT("\\logs");
+	SL_TSTRING strLogDir = TEXT("logs");
 	TCHAR curExeDir[MAX_FILENAME_LENGTH] = { 0 };
 	if (GetModuleFileName(nullptr, curExeDir, MAX_FILENAME_LENGTH) != 0)
 	{
-		strExeDir = curExeDir;
-		size_t index = strExeDir.find_last_of(TEXT("\\"));
-		strExeDir = strExeDir.substr(0, index) + TEXT("\\logs");
-		//std::wcout << strExeDir << std::endl;
+		strLogDir = curExeDir;
+		size_t index = strLogDir.find_last_of(TEXT("\\"));
+		m_strCurExeDir = strLogDir.erase(index);
+		strLogDir.append(TEXT("\\logs"));
 	}
 
-	if (SL_ACCESS(strExeDir.c_str(), 0) == -1)
+	if (SL_ACCESS(strLogDir.c_str(), 0) == -1)
 	{
-		int ret = SL_MAKEDIR(strExeDir.c_str());
+		int ret = SL_MAKEDIR(strLogDir.c_str());
 		//std::cout << "ret = " << ret << std::endl;
 	}
-	m_strLogDir = strExeDir;// 设置日志文件夹绝对路径【当前文件夹下的 logs 文件夹】
+	m_strLogDir = strLogDir;// 设置日志文件夹绝对路径【当前文件夹下的 logs 文件夹】
 }
 
-void LogTool::BasicConfigration()
+void LogTool::BasicConfiguration()
 {
 	log4cxx::PatternLayoutPtr				pTempFileLayout;		// 临时文件和控制台日志布局
 	log4cxx::PatternLayoutPtr				pRollingFileLayout;		// 回滚文件日志布局
@@ -81,7 +91,6 @@ void LogTool::BasicConfigration()
 	// 输出日志到回滚文件（用于长期记录）
 	pRollingFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %m    <- %C::%M (%F:%L)%n")));
 	m_pRollingFileAppender->setLayout(pRollingFileLayout);
-	m_pRollingFileAppender->setFile(m_strLogDir + LOG4CXX_STR("\\RollingFile.log"));
 	//m_pRollingFileAppender->setAppend(true); // default mode is true;
 	m_pRollingFileAppender->setMaxBackupIndex(10);
 	m_pRollingFileAppender->setMaxFileSize(LOG4CXX_STR("10MB"));
@@ -90,10 +99,9 @@ void LogTool::BasicConfigration()
 	m_pFileAppender->activateOptions(m_pool);
 	m_pRollingFileAppender->activateOptions(m_pool);
 
-	m_pLogger = log4cxx::Logger::getRootLogger();
-	m_pLogger->addAppender(m_pConsoleAppender);// 控制台输出日志耗时
-	m_pLogger->addAppender(m_pFileAppender);
-	m_pLogger->addAppender(m_pRollingFileAppender);
+	log4cxx::Logger::getRootLogger()->addAppender(m_pConsoleAppender);// 控制台输出日志耗时
+	log4cxx::Logger::getRootLogger()->addAppender(m_pFileAppender);
+	log4cxx::Logger::getRootLogger()->addAppender(m_pRollingFileAppender);
 }
 
 void LogTool::ChangeAppenderFilter()
@@ -112,25 +120,36 @@ void LogTool::ChangeAppenderFilter()
 	for (int i=0; i<appenderLen; i++)
 	{
 		allAppenders[i]->addFilter(pLevelRangeFilter);
-		if (allAppenders[i]->instanceof(m_pConsoleAppender->getClass()))
+		if (allAppenders[i]->instanceof(log4cxx::ConsoleAppender::getStaticClass()))
 		{
 			continue;
 			//std::cout << "ConsoleAppender" << std::endl;
 		}
-		else if (allAppenders[i]->instanceof(m_pRollingFileAppender->getClass()))
+		else if (allAppenders[i]->instanceof(log4cxx::RollingFileAppender::getStaticClass()))
 		{
+			log4cxx::RollingFileAppenderPtr tempRollingAppender = allAppenders[i];
+			tempRollingAppender->setFile(m_strLogDir + LOG4CXX_STR("\\RollingFile.log"));
+			tempRollingAppender->activateOptions(m_pool);
 			continue;
 			//std::cout << "RollingFileAppender" << std::endl;
 		}
-		else if (allAppenders[i]->instanceof(m_pFileAppender->getClass()))
+		else if (allAppenders[i]->instanceof(log4cxx::FileAppender::getStaticClass()))
 		{
+#ifdef _DEBUG
+			log4cxx::FileAppenderPtr tempFileAppender = allAppenders[i];
+			tempFileAppender->setFile(m_strLogDir + LOG4CXX_STR("\\TempFile.log"));
+			tempFileAppender->activateOptions(m_pool);
+#else
+			allAppenders[i]->clearFilters();
+			log4cxx::Logger::getRootLogger()->removeAppender(allAppenders[i]);
+#endif
 			continue;
 			//std::cout << "FileAppender" << std::endl;
 		}
 		else
 		{
 			allAppenders[i]->clearFilters();
-			m_pLogger->removeAppender(allAppenders[i]);
+			log4cxx::Logger::getRootLogger()->removeAppender(allAppenders[i]);
 		}
 	}
 }

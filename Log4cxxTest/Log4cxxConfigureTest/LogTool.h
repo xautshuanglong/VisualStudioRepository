@@ -10,6 +10,7 @@
 #include <log4cxx/fileappender.h>
 #include <log4cxx/rollingfileappender.h>
 #include <log4cxx/patternlayout.h>
+#include <log4cxx/propertyconfigurator.h>
 #include <log4cxx/spi/appenderattachable.h>
 #include <log4cxx/spi/location/locationinfo.h>
 
@@ -68,23 +69,19 @@ private:
 	static LogTool* volatile m_pInstance;
 
 	static std::mutex m_instanceMutex;
-	//log4cxx::ConsoleAppenderPtr m_pConsoleAppender;
-	//log4cxx::FileAppenderPtr m_pFileAppender;
-	//log4cxx::RollingFileAppenderPtr m_pRollingFileAppender;
-	//log4cxx::PatternLayoutPtr m_pPatternLayout;
 	log4cxx::ConsoleAppenderPtr				m_pConsoleAppender;		// 输出到控制台
-	log4cxx::FileAppenderPtr				m_pFileAppender;			// 输出到临时 TempFile.log
+	log4cxx::FileAppenderPtr				m_pFileAppender;		// 输出到临时 TempFile.log
 	log4cxx::RollingFileAppenderPtr			m_pRollingFileAppender;	// 输出到回滚文件 RollingFile.log
 	log4cxx::helpers::Pool					m_pool;
 	log4cxx::LoggerPtr m_pLogger;
-	//log4cxx::helpers::Pool m_pool;
 
 	char m_fileNameBuf[LOCATION_BUFFER_LEN], m_methodNameBuf[LOCATION_BUFFER_LEN];// 函数定位信息：调整源文件名及函数名长度
 
 	SL_TSTRING m_strLogDir;
+	SL_TSTRING m_strCurExeDir;
 
 	void CreateLogDirectory();
-	void BasicConfigration();
+	void BasicConfiguration();
 	void ChangeAppenderFilter();
 	log4cxx::spi::LocationInfo GetShortName(log4cxx::spi::LocationInfo location);
 

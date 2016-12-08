@@ -274,6 +274,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{804D9C
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Log4cxxConfigureTest", "Log4cxxConfigureTest\Log4cxxConfigureTest.vcxproj", "{FEBE319A-09A0-4EC8-A8E8-A5DD9EB107F1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backup", "backup", "{44C039A3-EE28-4BBF-9168-89525CB89800}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\backup\log4cxx.properties = Libs\backup\log4cxx.properties
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -325,5 +330,6 @@ Global
 		{AAD4F1A3-562F-4473-B737-EB2550A0AA3E} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
 		{41EFA596-DF80-4900-BD8F-793D6865B9AB} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
 		{804D9CCB-6C7F-4170-9B87-313074A11FF3} = {ED4C5E24-047E-4644-B19D-43D9C09EE347}
+		{44C039A3-EE28-4BBF-9168-89525CB89800} = {EDC6A2FD-E6BA-4840-BC43-AE0906194FA8}
 	EndGlobalSection
 EndGlobal

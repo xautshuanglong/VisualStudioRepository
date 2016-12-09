@@ -156,36 +156,32 @@ void LogTool::ChangeAppenderFilter()
 
 log4cxx::spi::LocationInfo LogTool::GetShortName(log4cxx::spi::LocationInfo location)
 {
-	std::string strFileName(location.getFileName());// 暂存文件名
 	std::string strClassName = location.getClassName();// 暂存类名
-	std::string strMethodName(location.getMethodName());// 暂存方法名
+	m_strFileName = location.getFileName();// 暂存文件名
+	m_strMethodName = location.getMethodName();// 暂存方法名
 
 	// 缩短文件名
-	size_t index = strFileName.find_last_of('\\');
+	size_t index = m_strFileName.find_last_of('\\');
 	if (index != std::string::npos)
 	{
-		strFileName.erase(0, index + 1);
+		m_strFileName.erase(0, index + 1);
 	}
 
 	// 缩短方法名
-	index = strMethodName.find_last_of(' ');
+	index = m_strMethodName.find_last_of(' ');
 	if (index != std::string::npos)
 	{
-		strMethodName = strMethodName.substr(index + 1);
+		m_strMethodName.erase(0, index + 1);
 	}
 
 	// 加入类名
 	if (strClassName.length() > 0)
 	{
 		strClassName.append("::");
-		strMethodName.insert(0, strClassName);
+		m_strMethodName.insert(0, strClassName);
 	}
 
-	// 转移字符串，否则 std::string 析构时清空字符缓存区
-	strcpy_s(m_fileNameBuf, strFileName.c_str());
-	strcpy_s(m_methodNameBuf, strMethodName.c_str());
-
-	return log4cxx::spi::LocationInfo(m_fileNameBuf, m_methodNameBuf, location.getLineNumber());
+	return log4cxx::spi::LocationInfo(m_strFileName.c_str(), m_strMethodName.c_str(), location.getLineNumber());
 }
 
 void LogTool::Trace(log4cxx::spi::LocationInfo location, const char *fmt, ...)

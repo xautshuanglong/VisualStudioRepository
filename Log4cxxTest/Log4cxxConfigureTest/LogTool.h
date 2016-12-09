@@ -16,7 +16,6 @@
 
 #define MAX_FILENAME_LENGTH 1024 // 日志相关路径长度
 #define MAX_MSG_BUFFER_LEN  1024 // 日志文件长度
-#define	LOCATION_BUFFER_LEN 100 // 函数位置信息转换缓冲区大小
 
 #define VA_ARGUMENTS_SPRINT(fmt,msgBuffer,length) \
 va_list argList; \
@@ -75,7 +74,7 @@ private:
 	log4cxx::helpers::Pool					m_pool;
 	log4cxx::LoggerPtr m_pLogger;
 
-	char m_fileNameBuf[LOCATION_BUFFER_LEN], m_methodNameBuf[LOCATION_BUFFER_LEN];// 函数定位信息：调整源文件名及函数名长度
+	std::string m_strFileName, m_strMethodName;// 函数定位信息：调整源文件名及函数名长度
 
 	SL_TSTRING m_strLogDir;
 	SL_TSTRING m_strCurExeDir;

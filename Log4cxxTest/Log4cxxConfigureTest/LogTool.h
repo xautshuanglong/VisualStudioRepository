@@ -67,13 +67,13 @@ private:
 	~LogTool();
 	static LogTool* volatile m_pInstance;
 
-	static std::mutex m_instanceMutex;
 	log4cxx::ConsoleAppenderPtr				m_pConsoleAppender;		// 输出到控制台
 	log4cxx::FileAppenderPtr				m_pFileAppender;		// 输出到临时 TempFile.log
 	log4cxx::RollingFileAppenderPtr			m_pRollingFileAppender;	// 输出到回滚文件 RollingFile.log
 	log4cxx::helpers::Pool					m_pool;
-	log4cxx::LoggerPtr m_pLogger;
+	log4cxx::LoggerPtr						m_pLogger;
 
+	static std::mutex m_instanceMutex;
 	std::string m_strFileName, m_strMethodName;// 函数定位信息：调整源文件名及函数名长度
 
 	SL_TSTRING m_strLogDir;

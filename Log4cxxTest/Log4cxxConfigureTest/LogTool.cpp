@@ -79,7 +79,7 @@ void LogTool::BasicConfiguration()
 	m_pRollingFileAppender = new log4cxx::RollingFileAppender();
 
 	// 输出日志到控制台
-	pTempFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{HH:mm:ss.SSS} [%-5p] %m    <- %C::%M (%F:%L)%n")));
+	pTempFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{HH:mm:ss.SSS} [%-5p] [%t] %m    <- %C::%M (%F:%L)%n")));
 	m_pConsoleAppender->setLayout(pTempFileLayout);
 	//m_pConsoleAppender->addFilter();
 
@@ -89,7 +89,7 @@ void LogTool::BasicConfiguration()
 	m_pFileAppender->setAppend(false);
 
 	// 输出日志到回滚文件（用于长期记录）
-	pRollingFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %m    <- %C::%M (%F:%L)%n")));
+	pRollingFileLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%t] %m    <- %C::%M (%F:%L)%n")));
 	m_pRollingFileAppender->setLayout(pRollingFileLayout);
 	//m_pRollingFileAppender->setAppend(true); // default mode is true;
 	m_pRollingFileAppender->setMaxBackupIndex(10);

@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 	//}
 	try
 	{
-		PropertyConfigurator::configure("log4cpp.ini");
+		PropertyConfigurator::configure("./log4cpp.ini");
 	}
 	catch (ConfigureFailure& e)
 	{

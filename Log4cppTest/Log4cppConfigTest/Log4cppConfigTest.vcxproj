@@ -90,17 +90,12 @@ xcopy /Y /F $(SolutionDir)libs\log4cpp\$(PlatformShortName)\$(Configuration)\*.d
       <AdditionalLibraryDirectories>$(SolutionDir)libs\log4cpp\$(PlatformShortName)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y /F $(ProjectDir)log4cpp.ini $(OutDir)
-xcopy /Y /F $(SolutionDir)libs\log4cpp\$(PlatformShortName)\$(Configuration)\*.dll $(OutDir)</Command>
+      <Command>xcopy /Y /F /D $(SolutionDir)libs\backup\log4cpp.ini $(OutDir)
+xcopy /Y /F /D $(SolutionDir)libs\log4cpp\$(PlatformShortName)\$(Configuration)\*.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Log4cppConfigTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="log4cpp.ini">
-      <FileType>Document</FileType>
-    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

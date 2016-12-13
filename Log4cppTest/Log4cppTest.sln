@@ -112,6 +112,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "threading", "threading", "{
 		libs\include\log4cpp\threading\Threading.hh = libs\include\log4cpp\threading\Threading.hh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backup", "backup", "{8507912C-F653-4658-B594-4D64D408BABE}"
+	ProjectSection(SolutionItems) = preProject
+		libs\backup\log4cpp.ini = libs\backup\log4cpp.ini
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -141,5 +146,6 @@ Global
 		{BB8239DE-0348-463D-830F-79404EA38703} = {246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE}
 		{923CBA39-05AA-4B09-8773-67FBE7D6C04A} = {593BB0E3-212B-4348-9E2F-735CB1A4D576}
 		{0F2E7509-F55F-4BAF-9B72-FF477CC50DF5} = {923CBA39-05AA-4B09-8773-67FBE7D6C04A}
+		{8507912C-F653-4658-B594-4D64D408BABE} = {3EB59E1F-BB0E-4277-A92C-67383C9D3114}
 	EndGlobalSection
 EndGlobal

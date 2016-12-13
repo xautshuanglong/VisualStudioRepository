@@ -22,12 +22,8 @@
  * Edit log4cxx.hw instead
  *
  */
-#ifdef _UNICODE
-#define LOG4CXX_LOGCHAR_IS_UTF8 0
-#else
-#define LOG4CXX_LOGCHAR_IS_UTF8 1
-#endif
 
+#define LOG4CXX_LOGCHAR_IS_UTF8 1
 #if LOG4CXX_LOGCHAR_IS_UTF8
 #define LOG4CXX_LOGCHAR_IS_WCHAR 0
 #else
@@ -57,8 +53,8 @@ typedef int log4cxx_status_t;
 typedef unsigned int log4cxx_uint32_t;
 
 //  definitions used when using static library
-#if defined(LOG4CXX_STATIC)
-//#if defined(LOG4CXX_STATIC) || (defined(_MSC_VER) && _MSC_VER >= 1900)
+//#if defined(LOG4CXX_STATIC)
+#if defined(LOG4CXX_STATIC) //|| (defined(_MSC_VER) && _MSC_VER >= 1900)
 #define LOG4CXX_EXPORT
 //   definitions used when building DLL
 #elif defined(LOG4CXX)
@@ -84,7 +80,6 @@ typedef std::vector<T> N
 //
 //   pointer and list definition macros when linking with DLL using VC
 //
-//#elif defined(_MSC_VER) && !defined(LOG4CXX_STATIC)
 #elif defined(_MSC_VER) && _MSC_VER<1900 && !defined(LOG4CXX_STATIC)
 #define LOG4CXX_PTR_DEF(T) \
 extern template class LOG4CXX_EXPORT log4cxx::helpers::ObjectPtrT<T>; \

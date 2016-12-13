@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 
 #include <log4cxx/logger.h>
 #include <log4cxx/consoleappender.h>
@@ -34,7 +35,7 @@ void ConfigureByCode()
 	log4cxx::PatternLayoutPtr patternLayout(new log4cxx::PatternLayout());
 	log4cxx::helpers::Pool pool;
 
-	patternLayout->setConversionPattern(log4cxx::LogString(L"%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %C.%M %m (%F:%L)%n"));
+	patternLayout->setConversionPattern(log4cxx::LogString(TEXT("%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %C.%M %m (%F:%L)%n")));
 
 	consoleAppender->setLayout(patternLayout);
 	consoleAppender->activateOptions(pool);

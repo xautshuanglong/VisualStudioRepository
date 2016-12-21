@@ -17,9 +17,9 @@ int main()
 	log4cpp::PatternLayout* consoleLayout = new log4cpp::PatternLayout();
 	log4cpp::PatternLayout* fileLayout = new log4cpp::PatternLayout();
 	log4cpp::PatternLayout* rollLayout = new log4cpp::PatternLayout();
-	consoleLayout->setConversionPattern("%d{%H:%M:%S.%l} [%-5p] %c %m%n");
-	fileLayout->setConversionPattern("%d{%Y-%m-%d %H:%M:%S.%l} [%-5p] %c %m%n");
-	rollLayout->setConversionPattern("%d{%Y-%m-%d %H:%M:%S.%l} [%-5p] %c %m%n");
+	consoleLayout->setConversionPattern("%d{%H:%M:%S.%l} [%-5p] [%t] %c %m%n");
+	fileLayout->setConversionPattern("%d{%Y-%m-%d %H:%M:%S.%l} [%-5p] [%t] %c %m%n");
+	rollLayout->setConversionPattern("%d{%Y-%m-%d %H:%M:%S.%l} [%-5p] [%t] %c %m%n");
 	
 	// default appender, is equivalent to ostreamAppender with std::cout.
 	log4cpp::Category& root = log4cpp::Category::getRoot();

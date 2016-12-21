@@ -97,6 +97,9 @@ xcopy /Y /F /D $(SolutionDir)libs\log4cpp\$(PlatformShortName)\$(Configuration)\
   <ItemGroup>
     <ClCompile Include="Log4cppConfigTest.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RingBuffer.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

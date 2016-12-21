@@ -3,6 +3,8 @@
 #include <log4cpp/NDC.hh>
 #include <log4cpp/PropertyConfigurator.hh>
 
+#include "RingBuffer.h"
+
 using namespace std;
 using namespace log4cpp;
 
@@ -41,6 +43,9 @@ int main(int argc, char* argv[])
 
 	console.info("console info test");
 	console.warn("console warn test");
+
+	std::cout << "============================== RingBuffer Testing ==============================" << std::endl;
+	RingBuffer<int> ringBuffer;
 
 	return 0;
 }

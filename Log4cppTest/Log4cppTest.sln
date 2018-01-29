@@ -22,12 +22,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{9A18A1DD
 	ProjectSection(SolutionItems) = preProject
 		libs\log4cpp\x86\Debug\log4cpp.dll = libs\log4cpp\x86\Debug\log4cpp.dll
 		libs\log4cpp\x86\Debug\log4cpp.lib = libs\log4cpp\x86\Debug\log4cpp.lib
+		libs\log4cpp\x86\Debug\log4cpp.pdb = libs\log4cpp\x86\Debug\log4cpp.pdb
+		libs\log4cpp\x86\Debug\log4cpp_static.lib = libs\log4cpp\x86\Debug\log4cpp_static.lib
+		libs\log4cpp\x86\Debug\log4cpp_static.pdb = libs\log4cpp\x86\Debug\log4cpp_static.pdb
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{5E824622-2B92-44BB-84DF-8562AF30D690}"
 	ProjectSection(SolutionItems) = preProject
 		libs\log4cpp\x86\Release\log4cpp.dll = libs\log4cpp\x86\Release\log4cpp.dll
 		libs\log4cpp\x86\Release\log4cpp.lib = libs\log4cpp\x86\Release\log4cpp.lib
+		libs\log4cpp\x86\Release\log4cpp_static.lib = libs\log4cpp\x86\Release\log4cpp_static.lib
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{246AAC5E-759A-4E24-BEE5-B6A21DDC4EBE}"
@@ -36,12 +40,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{AFD8563B
 	ProjectSection(SolutionItems) = preProject
 		libs\log4cpp\x64\Debug\log4cpp.dll = libs\log4cpp\x64\Debug\log4cpp.dll
 		libs\log4cpp\x64\Debug\log4cpp.lib = libs\log4cpp\x64\Debug\log4cpp.lib
+		libs\log4cpp\x64\Debug\log4cpp.pdb = libs\log4cpp\x64\Debug\log4cpp.pdb
+		libs\log4cpp\x64\Debug\log4cpp_static.lib = libs\log4cpp\x64\Debug\log4cpp_static.lib
+		libs\log4cpp\x64\Debug\log4cpp_static.pdb = libs\log4cpp\x64\Debug\log4cpp_static.pdb
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{BB8239DE-0348-463D-830F-79404EA38703}"
 	ProjectSection(SolutionItems) = preProject
 		libs\log4cpp\x64\Release\log4cpp.dll = libs\log4cpp\x64\Release\log4cpp.dll
 		libs\log4cpp\x64\Release\log4cpp.lib = libs\log4cpp\x64\Release\log4cpp.lib
+		libs\log4cpp\x64\Release\log4cpp_static.lib = libs\log4cpp\x64\Release\log4cpp_static.lib
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "log4cpp", "log4cpp", "{923CBA39-05AA-4B09-8773-67FBE7D6C04A}"

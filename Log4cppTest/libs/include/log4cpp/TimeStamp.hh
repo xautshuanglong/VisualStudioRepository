@@ -65,7 +65,7 @@ namespace log4cpp {
         protected:
         static TimeStamp _startStamp;
 
-        int _seconds;
+        long _seconds;
         int _microSeconds;
     };
 }

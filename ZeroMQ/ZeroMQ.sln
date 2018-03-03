@@ -5,6 +5,48 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZeromqDevelopEnvironment", "ZeromqDevelopEnvironment\ZeromqDevelopEnvironment.vcxproj", "{C1B76BD4-C8AE-433B-8A60-15C310031D03}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{BB5315C7-43A6-4238-93EA-642521C97486}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{5AECFEEC-40C7-40B8-A000-92D569EB0722}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{E1EAD55B-6A8B-4CB4-9F92-27EB6B48A1D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{FBFBBF87-C997-4674-9FA4-97D519F35B35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{3A4607A9-35E4-4D14-91BC-AF29A938E86E}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\x64\Debug\libzmq.dll = Libs\x64\Debug\libzmq.dll
+		Libs\x64\Debug\libzmq.lib = Libs\x64\Debug\libzmq.lib
+		Libs\x64\Debug\libzmq.pdb = Libs\x64\Debug\libzmq.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{01631709-9D43-4B91-9F03-B664B996A299}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\x64\Release\libzmq.dll = Libs\x64\Release\libzmq.dll
+		Libs\x64\Release\libzmq.lib = Libs\x64\Release\libzmq.lib
+		Libs\x64\Release\libzmq.pdb = Libs\x64\Release\libzmq.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{DAB2765D-F39A-4DA3-8E96-652D9A3BA496}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\x86\Debug\libzmq.dll = Libs\x86\Debug\libzmq.dll
+		Libs\x86\Debug\libzmq.lib = Libs\x86\Debug\libzmq.lib
+		Libs\x86\Debug\libzmq.pdb = Libs\x86\Debug\libzmq.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{67E66377-2844-4E75-AFE5-EE1893B250EF}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\x86\Release\libzmq.dll = Libs\x86\Release\libzmq.dll
+		Libs\x86\Release\libzmq.lib = Libs\x86\Release\libzmq.lib
+		Libs\x86\Release\libzmq.pdb = Libs\x86\Release\libzmq.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeroMQ", "ZeroMQ", "{7C3EABE9-A180-44E4-824C-85014FF18197}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\include\ZeroMQ\zmq.h = Libs\include\ZeroMQ\zmq.h
+		Libs\include\ZeroMQ\zmq_utils.h = Libs\include\ZeroMQ\zmq_utils.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -24,5 +66,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5AECFEEC-40C7-40B8-A000-92D569EB0722} = {BB5315C7-43A6-4238-93EA-642521C97486}
+		{E1EAD55B-6A8B-4CB4-9F92-27EB6B48A1D1} = {BB5315C7-43A6-4238-93EA-642521C97486}
+		{FBFBBF87-C997-4674-9FA4-97D519F35B35} = {BB5315C7-43A6-4238-93EA-642521C97486}
+		{3A4607A9-35E4-4D14-91BC-AF29A938E86E} = {FBFBBF87-C997-4674-9FA4-97D519F35B35}
+		{01631709-9D43-4B91-9F03-B664B996A299} = {FBFBBF87-C997-4674-9FA4-97D519F35B35}
+		{DAB2765D-F39A-4DA3-8E96-652D9A3BA496} = {E1EAD55B-6A8B-4CB4-9F92-27EB6B48A1D1}
+		{67E66377-2844-4E75-AFE5-EE1893B250EF} = {E1EAD55B-6A8B-4CB4-9F92-27EB6B48A1D1}
+		{7C3EABE9-A180-44E4-824C-85014FF18197} = {5AECFEEC-40C7-40B8-A000-92D569EB0722}
 	EndGlobalSection
 EndGlobal

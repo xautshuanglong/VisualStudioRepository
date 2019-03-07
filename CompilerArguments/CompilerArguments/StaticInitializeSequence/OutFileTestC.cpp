@@ -2,6 +2,7 @@
 #include "OutFileTestC.h"
 #include <iostream>
 
+#pragma init_seg(lib)
 static OutFileTestC gOutFileTestC;
 
 OutFileTestC::OutFileTestC()

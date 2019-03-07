@@ -2,7 +2,7 @@
 #include "OutFileTestB.h"
 #include <iostream>
 
-#pragma init_seg(lib)
+#pragma init_seg(compiler)
 static OutFileTestB gOutFileTestB;
 
 OutFileTestB::OutFileTestB()

@@ -145,10 +145,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OutFileTestA.h" />
+    <ClInclude Include="OutFileTestB.h" />
+    <ClInclude Include="OutFileTestC.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OutFileTestA.cpp" />
+    <ClCompile Include="OutFileTestB.cpp" />
+    <ClCompile Include="OutFileTestC.cpp" />
     <ClCompile Include="StaticInitializeSequence.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

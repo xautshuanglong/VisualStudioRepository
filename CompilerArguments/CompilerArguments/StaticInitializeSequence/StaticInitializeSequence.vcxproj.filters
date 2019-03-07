@@ -24,12 +24,30 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OutFileTestA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutFileTestB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutFileTestC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StaticInitializeSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OutFileTestA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OutFileTestB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OutFileTestC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
